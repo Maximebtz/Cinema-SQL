@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: auto;
+    background: url(../Img/Joker.jpg);
+    background-size: cover;
+    backdrop-filter: blur(3px) brightness(70%);
+}
+
+nav{
+    height: 55px;
+    display: flex;
+    ul{
+        display: flex;
+        list-style: none;
+        align-items: center;
+        color: ghostwhite;
+        margin-left: 10%;
+        li{
+            a{
+                text-decoration: none;
+                color: ghostwhite;
+            }
+            padding: 0 25px;
+            letter-spacing: 4px;
+            font-weight: light;
+            font-size: smaller;
+        }
+    }
+}
+
+
+main {
+    height: 591px;
+    .left-line {
+        display: inline;
+        height: 80%;
+        width: 1px;
+        border: 1px solid white;
+        margin: 20px 0 0 5%;
+        
+    }
+}
