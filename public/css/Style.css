@@ -17,9 +17,12 @@ body {
 nav {
   height: 50px;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: end;
   text-align: center;
+}
+nav h1 {
+  margin-left: 5%;
 }
 nav #searchbar {
   margin-right: 5%;
@@ -137,4 +140,6 @@ main .sec-2 .right-content {
   min-width: 300px;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-}/*# sourceMappingURL=Style.css.map */
+}
+
+/********Footer*******//*# sourceMappingURL=Style.css.map */
