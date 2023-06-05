@@ -15,19 +15,41 @@ body {
 }
 
 nav {
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: end;
   text-align: center;
 }
+nav ul {
+  display: flex;
+  margin-left: 5%;
+}
+nav ul li {
+  margin-right: 50px;
+  transition: all 0.4s ease-in-out;
+}
+nav ul li a {
+  font-size: 1.4em;
+  letter-spacing: 3px;
+  color: ghostwhite;
+  text-decoration: none;
+}
+nav ul li:hover {
+  transform: scale(1.1);
+}
 nav h1 {
   margin-left: 5%;
 }
+nav h1 a {
+  color: ghostwhite;
+  text-decoration: none;
+}
 nav #searchbar {
   margin-right: 5%;
-  padding: 0 5px;
-  border-radius: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 1em;
   background: rgba(248, 248, 255, 0.7);
   border: rgb(248, 248, 255) solid 1px;
   box-shadow: rgba(255, 255, 255, 0.35) 0px 0px 15px;

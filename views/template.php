@@ -10,7 +10,17 @@
 <body>
     <header>
         <nav>
-            <h1><a href="#">HOME</a></h1>
+          <ul>
+            <li>
+              <a href="index.php?action=homePagep">HOME</a>
+            </li>
+            <li>
+              <a href="index.php?action=listFilms">LISTE FILMS</a>
+            </li>
+            <li>
+              <a href="index.php?action=listActors">LISTE ACTEURS</a>
+            </li>
+          </ul>
             <input id="searchbar" onkeyup="search_film()" type="text"
             name="search" placeholder="Search film..">
         </nav>

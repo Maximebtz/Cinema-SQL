@@ -21,10 +21,11 @@ $roleCtrl = new RoleController();
 
 if(isset($_GET['action'])) {
     switch($_GET['action']){
-        // case 'listFilms': $movieCtrl->findAllFilms(); break;
-        // case 'listActors': $personCtrl->findAllActors(); break;
+        case 'listFilms': $movieCtrl->findAllFilms(); 
+        break;
+        case 'listActors': $personCtrl->findAllActors(); break;
+        default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();
     }
-
 ?>
