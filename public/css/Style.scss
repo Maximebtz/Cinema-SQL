@@ -75,6 +75,7 @@ main {
     h2{
         font-size: 3em;
         padding: 25px;
+        margin-top: 50px;
     }
     .left-line {
         height: 80%;
@@ -199,11 +200,12 @@ main {
 /**********list**********/
 
 .page-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    color: ghostwhite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: inherit;
+        color: ghostwhite;
     h2 {
         font-size: 3.5em;
     }
