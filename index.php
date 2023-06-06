@@ -20,10 +20,18 @@ $roleCtrl = new RoleController();
 // ex :  index.php?action=listFilms
 
 if(isset($_GET['action'])) {
+
+    $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
     switch($_GET['action']){
         case 'listFilms': $movieCtrl->findAllFilms(); 
         break;
-        case 'listActors': $personCtrl->findAllActors(); break;
+        case 'listActors': $personCtrl->findAllActors(); 
+        break;
+        case 'listDirectors': $personCtrl->findAllDirectors(); 
+        break;
+        case 'listGenres': $genreCtrl->findAllGenres(); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();

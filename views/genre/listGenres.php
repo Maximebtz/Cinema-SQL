@@ -5,18 +5,19 @@ ob_start();
 ?>
 <div class="page-content">
     <h2>
-    Liste des acteurs
+    Liste des genres
     </h2>
     
     <div class="main-content">
+        
         <?php
         // echo "<div class='li'";
         
-        while ($actor = $actors->fetch()) {
+        while ($genre = $genres->fetch()) {
                 echo "
                     <div class='li'>
                             <span></span>
-                            <p>" . $actor["nom"] . " " . $actor["prenom"] . "</p>
+                            <p>" . $genre["nom_genre"] ."</p>
                     </div>
                 ";
             }
@@ -27,7 +28,7 @@ ob_start();
 </div>
 
 <?php
-$title = "Liste des acteurs";
+$title = "Liste des genres";
 $content = ob_get_clean();
 require "./views/template.php"
 ?>

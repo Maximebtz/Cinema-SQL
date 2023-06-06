@@ -8,17 +8,24 @@
     <title><?= $title ?></title>
 </head>
 <body>
+  <div class="wrapper"> 
     <header>
         <nav>
           <ul>
             <li>
-              <a href="index.php?action=homePagep">HOME</a>
+              <a href="index.php?action=homePage">HOME</a>
             </li>
             <li>
               <a href="index.php?action=listFilms">LISTE FILMS</a>
             </li>
             <li>
+              <a href="index.php?action=listGenres">LISTE GENRES</a>
+            </li>
+            <li>
               <a href="index.php?action=listActors">LISTE ACTEURS</a>
+            </li>
+            <li>
+              <a href="index.php?action=listDirectors">LISTE REALISATEURS</a>
             </li>
           </ul>
             <input id="searchbar" onkeyup="search_film()" type="text"
@@ -83,5 +90,6 @@
         </div>
       </div>
 </footer> -->
+  </div>
 </body>
 </html>
