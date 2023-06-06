@@ -32,6 +32,11 @@ class MovieController {
         require "views/movie/detailFilms.php";
     }
     
+    public function addFilms(){
+        // $dao = new DAO();
+        // $deta = $dao->executerRequete($sql, $params);
+        require "views/movie/addFilms.php";
+    }
 
 }
 

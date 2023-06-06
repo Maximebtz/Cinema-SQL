@@ -128,7 +128,7 @@ main .sec-1 .films-contener {
   scroll-behavior: smooth;
 }
 main .sec-2 {
-  display: none;
+  display: flex;
   justify-content: space-between;
   width: 90%;
 }
@@ -137,12 +137,11 @@ main .sec-2 h1 {
   flex-direction: column;
   width: 500px;
   margin-left: 30px;
-  height: 485px;
   left: 0px;
   top: 7px;
   font-style: normal;
-  font-size: 80px;
-  line-height: 97px;
+  font-size: 100px;
+  line-height: 125px;
   letter-spacing: 0.15em;
   color: #FFFFFF;
 }
@@ -160,22 +159,6 @@ main .sec-2 h1 .word-4 {
 }
 main .sec-2 h1 .word-5 {
   font-weight: 400;
-}
-main .sec-2 .right-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: ghostwhite;
-  padding: 20px;
-  background-color: transparent;
-  border-radius: 10px;
-  border: rgba(248, 248, 255, 0.5) solid 1px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 0 50px;
-  width: 35%;
-  min-width: 300px;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
 }
 
 /**********list**********/
@@ -294,6 +277,7 @@ main .sec-2 .right-content {
   background-color: rgba(248, 248, 255, 0.5);
   width: 100%;
   padding: 20px;
+  margin-top: 0;
 }
 .page-detail h3 {
   font-size: 2em;
@@ -315,6 +299,81 @@ main .sec-2 .right-content {
   padding: 25px;
   text-align: center;
   background: rgba(248, 248, 255, 0.2);
+}
+
+/**********add*********/
+.right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ghostwhite;
+  padding: 25px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: rgba(248, 248, 255, 0.5) solid 1px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 50px;
+  width: 30%;
+  margin-right: 20%;
+  min-width: 300px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.right-content h2 {
+  padding: 0 0 50px 0;
+  margin-top: 0;
+  text-align: center;
+}
+.right-content form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.right-content form label {
+  font-size: 25px;
+  padding: 0 0 10px 0;
+}
+.right-content form label:nth-child(1) {
+  padding: 0 0 10px 0;
+}
+.right-content form input {
+  height: 40px;
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  margin: 0 0 20px 0;
+  font-size: medium;
+  background-color: rgba(248, 248, 255, 0.5);
+}
+.right-content form input:focus {
+  background-color: rgba(248, 248, 255, 0.8);
+}
+.right-content form select {
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  margin: 0 0 20px 0;
+  font-size: medium;
+  background-color: rgba(248, 248, 255, 0.5);
+}
+.right-content form select:focus {
+  background-color: rgba(248, 248, 255, 0.8);
+}
+.right-content form #submit {
+  margin: 20px 65px 0 65px;
+  height: 45px;
+  background-color: ghostwhite;
+  color: gray;
+  font-size: 20px;
+  width: 60%;
+  transition: all 0.4s ease-in-out;
+}
+.right-content form #submit:hover {
+  transform: scale(1.05);
 }
 
 /********Footer*******//*# sourceMappingURL=Style.css.map */

@@ -15,6 +15,9 @@ class GenreController {
 
     }
 
+    public function addGenres() {
+        require "views/genre/addGenres.php";
+    }
 }
 
 ?>

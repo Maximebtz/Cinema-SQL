@@ -28,6 +28,32 @@ class PersonController {
         require "views/director/listDirectors.php";
 
     }
+
+    public function addActors(){
+        // $dao = new DAO();
+
+        // $sql = "SELECT pe.nom, pe.prenom
+        // FROM personne pe
+        // INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
+        // GROUP BY pe.id_personne";
+        
+        // $addActor = $dao->executerRequete($sql);
+
+        require "views/actor/addActors.php";
+    }
+
+    public function addDirectors(){
+        // $dao = new DAO();
+
+        // $sql = "SELECT pe.nom, pe.prenom
+        // FROM personne pe
+        // INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
+        // GROUP BY pe.id_personne";
+        
+        // $addDirector = $dao->executerRequete($sql);
+
+        require "views/director/addDirectors.php";
+    }
 }
 
 ?>

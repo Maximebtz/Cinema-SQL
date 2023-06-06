@@ -34,6 +34,14 @@ if(isset($_GET['action'])) {
         break;
         case 'detailFilms': $movieCtrl->findFilmDetails($id); 
         break;
+        case 'addActors': $personCtrl->addActors(); 
+        break;
+        case 'addDirectors': $personCtrl->addDirectors(); 
+        break;
+        case 'addGenres': $genreCtrl->addGenres(); 
+        break;
+        case 'addFilms': $movieCtrl->addFilms(); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();

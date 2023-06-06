@@ -23,7 +23,7 @@ ob_start();
             
             echo 
             "<div class='icon'>
-                <a href='index.php?action=addActor'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
+                <a href='index.php?action=addActors'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
             </div>";
         ?>
     </div>
