@@ -30,17 +30,21 @@ class PersonController {
     }
 
     public function addActors(){
-        // $dao = new DAO();
-
-        // $sql = "SELECT pe.nom, pe.prenom
-        // FROM personne pe
-        // INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
-        // GROUP BY pe.id_personne";
         
-        // $addActor = $dao->executerRequete($sql);
-
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $sexe = $_POST['sexe'];
+        $date_naissance = $_POST['dateNaissance'];
+        
+        $sql = "INSERT INTO personne (nom, prenom, sexe, dateNaissance) 
+                VALUES ('$nom', '$prenom', '$sexe', '$date_naissance')";
+        
+        $dao = new DAO();
+        $addActor = $dao->executerRequete($sql);
+    
         require "views/actor/addActors.php";
     }
+    
 
     public function addDirectors(){
         // $dao = new DAO();

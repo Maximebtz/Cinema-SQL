@@ -17,7 +17,7 @@ ob_start();
             <h2>
                 Ajout acteur
             </h2>
-            <form action="ajouter_acteur.php" method="post">
+            <form action="index.php?action=addActors" method="post">
                 <label for="nom">Nom :</label>
                 <input type="text" name="nom" id="nom" required>
                 
