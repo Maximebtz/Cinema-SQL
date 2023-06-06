@@ -70,12 +70,13 @@ main {
   height: 869px;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
   color: ghostwhite;
 }
 main h2 {
   font-size: 3em;
-  padding-bottom: 50px;
+  padding: 25px;
 }
 main .left-line {
   height: 80%;
@@ -181,16 +182,30 @@ main .sec-2 .right-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   color: ghostwhite;
 }
 .page-content h2 {
   font-size: 3.5em;
 }
 
+.icon {
+  display: inline;
+  width: 300px;
+  min-height: 400px;
+  margin: 2%;
+}
+.icon img {
+  transition: all 1s ease-in-out;
+}
+.icon img:hover {
+  transform: rotate(180deg);
+}
+
 .main-content {
   display: inline;
   width: 100%;
-  height: 700px;
+  height: 750px;
   overflow-y: scroll;
 }
 .main-content::-webkit-scrollbar {
@@ -245,6 +260,59 @@ main .sec-2 .right-content {
 .li:hover {
   transform: scale(1.07);
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 40px;
+}
+
+/**********detail**********/
+.page-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 600px;
+  border: solid 1px rgba(248, 248, 255, 0.5);
+  border-radius: 10px;
+  font-size: 1.5em;
+  min-height: 400px;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 35px;
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+}
+.page-detail span {
+  background: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  height: 200px;
+}
+.page-detail h2 {
+  font-size: 1.5em;
+  background-color: rgba(248, 248, 255, 0.5);
+  width: 100%;
+  padding: 20px;
+}
+.page-detail h3 {
+  font-size: 2em;
+  padding: 10px;
+}
+.page-detail ul {
+  list-style-type: none;
+}
+.page-detail ul li {
+  padding-top: 15px;
+}
+.page-detail ul li p {
+  background: none;
+  font-weight: bold;
+  text-decoration: underline;
+  padding-bottom: 10px;
+}
+.page-detail .li-detail {
+  padding: 25px;
+  text-align: center;
+  background: rgba(248, 248, 255, 0.2);
 }
 
 /********Footer*******//*# sourceMappingURL=Style.css.map */

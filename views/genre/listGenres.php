@@ -22,7 +22,10 @@ ob_start();
                 ";
             }
             
-        // echo "</div>";
+        echo 
+        "<div class='icon'>
+            <a href='index.php?action=addGenre'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
+        </div>";
         ?>
     </div>
 </div>

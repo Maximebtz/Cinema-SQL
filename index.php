@@ -32,6 +32,8 @@ if(isset($_GET['action'])) {
         break;
         case 'listGenres': $genreCtrl->findAllGenres(); 
         break;
+        case 'detailFilms': $movieCtrl->findFilmDetails($id); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();
