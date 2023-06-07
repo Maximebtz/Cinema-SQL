@@ -270,6 +270,8 @@ main {
     p{
         padding: 25px;
         text-align: center;
+        // width: min-content;
+        height: 100%;
     }
     a{  
         padding: 25px;
@@ -356,6 +358,16 @@ img.img-film {
         padding: 25px;
         text-align: center;
         background: rgba(248, 248, 255, 0.200);
+    }
+    a{  
+        margin: 50px;
+        font-size: 20px;
+        color: rgba(248, 248, 255, 0.500);
+        transition: all 0.4s ease-in-out;
+        &:hover{
+            color: rgba(248, 248, 255, 0.800);
+            transform: scale(1.05);
+        }
     }
 }
 
@@ -445,8 +457,14 @@ img.img-film {
     display: flex;
 }
 
+.annee{
+    display: flex;
+    flex-direction: column;
+}
 
 .duree{
+    display: flex;
+    flex-direction: column;
     margin-left: 15px;
     #genre_film{
         width: 100%;

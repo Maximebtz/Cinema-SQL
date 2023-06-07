@@ -30,7 +30,9 @@ class GenreController {
         require "views/genre/addGenres.php";
     }
 
-    
+    public function modifyGenre(){
+        
+    }
 }
 
 ?>

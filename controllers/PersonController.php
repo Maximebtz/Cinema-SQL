@@ -14,7 +14,8 @@ class PersonController {
         require "views/actor/listActors.php";
 
     }
-
+    
+    
     public function findAllDirectors(){
         $dao = new DAO();
 
@@ -28,6 +29,7 @@ class PersonController {
         require "views/director/listDirectors.php";
 
     }
+
 
     public function addActors(){
         $dao = new DAO();
@@ -55,16 +57,39 @@ class PersonController {
     
 
     public function addDirectors(){
-        // $dao = new DAO();
 
-        // $sql = "SELECT pe.nom, pe.prenom
-        // FROM personne pe
-        // INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
-        // GROUP BY pe.id_personne";
-        
-        // $addDirector = $dao->executerRequete($sql);
+        $dao = new DAO();
+
+        if(isset($_POST['addDirector'])){
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
+            $sexe = $_POST['sexe'];
+            $date_naissance = $_POST['dateNaissance'];
+            
+            $sql = "INSERT INTO personne (id_personne, nom, prenom, sexe, dateNaissance) 
+                    VALUES (NULL, :nom, :prenom, :sexe, :dateNaissance)";
+            
+            $params = [
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":sexe" => $sexe,
+                ":dateNaissance" => $date_naissance
+            ];
+
+            $addDirector = $dao->executerRequete($sql, $params);
+        }
 
         require "views/director/addDirectors.php";
+    }
+
+
+    public function modifyActor(){
+        
+    }
+
+
+    public function modifyDirector(){
+
     }
 }
 

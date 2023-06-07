@@ -21,19 +21,17 @@ ob_start();
                                 <li class='small'><p>Durée :</p> " . $detail["duree_film"] ." min</li>
                                 <li class='small'><p>Réalisateur :</p> " . $detail["nom"] ."</li>
                                 <li class='synopsis'><p>Synopsis :</p> " . $detail["synopsis_film"] ."</li>
-
+                                <a href='index.php?action=modifyFilms&id_film" . $detail['id_film'] . "'>Modifier</a>
                             </ul>
                     </div>
                 ";
             }
-            
-            
         ?>
     </div>
 </div>
 
 <?php
-    $title = "Détail details";
+    $title = "Détail film";
     $content = ob_get_clean();
     require "./views/template.php"
 ?>

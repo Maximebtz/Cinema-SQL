@@ -80,6 +80,53 @@ class MovieController {
         }
         require "views/movie/addFilms.php";
     }
+
+
+    public function modifyFilms(){
+        $dao = new DAO();
+    
+        if (isset($_POST['addFilm'])) {
+            $img_film = $_POST['image_film'];
+            $idFilm = $_GET['id_film'];
+            $titre = $_POST['titre_film'];
+            $annee = $_POST['annee_film'];
+            $dureefilm = $_POST['duree_film'];
+            $synopsis = $_POST['synopsis_film'];
+            $genre = $_POST['id_genre'];
+            $idRealisateur = $_POST['id_realisateur'];
+    
+            // Mettez à jour les données dans la table "film"
+            $sql = "UPDATE film SET titre_film = :titre, annee_film = :annee, duree_film = :duree_film, image_film = :img_film, synopsis_film = :synopsis, id_realisateur = :id_realisateur WHERE id_film = :idFilm";
+    
+            $params = [
+                ":titre" => $titre,
+                ":annee" => $annee,
+                ":duree_film" => $dureefilm,
+                ":img_film" => $img_film,
+                ":synopsis" => $synopsis,
+                ":id_realisateur" => $idRealisateur,
+                ":idFilm" => $idFilm
+            ];
+    
+            $modifyFilm = $dao->executerRequete($sql, $params);
+    
+            // Vérifiez si l'ID du film est valide avant de mettre à jour la table "posseder"
+            if ($idFilm) {
+                // Mettez à jour les données dans la table "posseder"
+                $sqlPosseder = "UPDATE posseder SET id_genre = :id_genre WHERE id_film = :id_film";
+                $paramsPosseder = [
+                    ":id_film" => $idFilm,
+                    ":id_genre" => $genre
+                ];
+                $modifyPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
+            } else {
+                // Gestion de l'erreur si l'ID du film n'est pas valide
+                // Par exemple, afficher un message d'erreur ou effectuer une autre action appropriée
+            }
+        }
+        require "views/movie/modifyFilms.php";
+    }
+    
 }
 
 ?>
