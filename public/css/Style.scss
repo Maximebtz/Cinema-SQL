@@ -159,10 +159,10 @@ main {
             letter-spacing: 0.15em;
             color: #FFFFFF;
             .word-1{
-                font-weight: 300;
+                font-weight: 200;
             }    
             .word-2{
-                font-weight: 200;
+                font-weight: 100;
                 
             }    
             .word-3{
@@ -269,6 +269,12 @@ main {
 }
 
 
+img.img-film {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /**********detail**********/
 
 .page-detail {
@@ -324,13 +330,19 @@ main {
 
 
 /**********add*********/
+
+.left-content {
+    display: flex;
+    align-items: center;
+}
+
 .right-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: ghostwhite;
-    padding: 25px;
+    padding: 50px;
     background-color: transparent;
     border-radius: 10px;
     border: rgba(248, 248, 255, 0.500) solid 1px;
@@ -347,7 +359,7 @@ main {
     form {
         display: flex;
         flex-direction: column;
-        width: 70%;
+        width: 85%;
         label {
             font-size: 25px;
             padding: 0 0 10px 0;
@@ -398,9 +410,38 @@ main {
     }
 }    
 
+.horizontal {
+    display: flex;
+}
 
 
+.duree{
+    margin-left: 15px;
+    #genre_film{
+        width: 100%;
+    }
+}
 
+#duree_film::placeholder {
+    color: rgba(0, 0, 0, 0.800);
+}
+
+input#image_film {
+    background: none;
+    height: max-content;
+    padding: 0;
+    border-radius: 5px
+}
+
+textarea#synopsis_film {
+    background-color: rgba(248, 248, 255, 0.500);
+    border-radius: 25px;
+    padding: 20px;
+    font-size: medium;
+            &:focus {
+                background-color: rgba(248, 248, 255, 0.800);
+            }
+}
 
 
 

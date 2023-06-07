@@ -17,7 +17,7 @@ ob_start();
             <h2>
                 Ajout acteur
             </h2>
-            <form action="index.php?action=addActors" method="post">
+            <form action="" method="post">
                 <label for="nom">Nom :</label>
                 <input type="text" name="nom" id="nom" required>
                 
@@ -34,7 +34,7 @@ ob_start();
                 <label for="dateNaissance">Date de naissance :</label>
                 <input type="date" name="dateNaissance" id="dateNaissance" required>
                 
-                <input id="submit" type="submit" value="Ajouter">
+                <input id="submit" type="submit" name="addActor" value="Ajouter">
             </form>
         </div>
     </section>

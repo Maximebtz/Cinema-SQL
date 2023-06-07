@@ -30,18 +30,26 @@ class PersonController {
     }
 
     public function addActors(){
-        
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $sexe = $_POST['sexe'];
-        $date_naissance = $_POST['dateNaissance'];
-        
-        $sql = "INSERT INTO personne (nom, prenom, sexe, dateNaissance) 
-                VALUES ('$nom', '$prenom', '$sexe', '$date_naissance')";
-        
         $dao = new DAO();
-        $addActor = $dao->executerRequete($sql);
-    
+
+        if(isset($_POST['addActor'])){
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
+            $sexe = $_POST['sexe'];
+            $date_naissance = $_POST['dateNaissance'];
+            
+            $sql = "INSERT INTO personne (id_personne, nom, prenom, sexe, dateNaissance) 
+                    VALUES (NULL, :nom, :prenom, :sexe, :dateNaissance)";
+            
+            $params = [
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":sexe" => $sexe,
+                ":dateNaissance" => $date_naissance
+            ];
+
+            $addActor = $dao->executerRequete($sql, $params);
+        }
         require "views/actor/addActors.php";
     }
     

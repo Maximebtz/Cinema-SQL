@@ -17,7 +17,7 @@ ob_start();
             <h2>
                 Ajout genre
             </h2>
-            <form action="index.php?action=addGenres" method="post">
+            <form action="" method="post">
                 <label for="nom_genre">Nom :</label>
                 <input type="text" name="nom_genre" id="nom_genre" required>
 

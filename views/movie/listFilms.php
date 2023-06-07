@@ -14,7 +14,7 @@ ob_start();
         while ($film = $films->fetch()) {
                 echo "
                     <div class='li'>
-                            <span></span>
+                            <span><img class='img-film' src='" . $film["image_film"] . "' alt='Image du film'></span>
                             <p>" . $film["titre_film"] . "</p>
                             <a href='index.php?action=detailFilms&id=" . $film["id_film"] . "'>Detail Film</a>
                     </div>
