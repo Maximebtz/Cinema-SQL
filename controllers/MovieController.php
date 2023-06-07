@@ -46,29 +46,36 @@ class MovieController {
             $idRealisateur = $_POST['id_realisateur'];
 
 
+            
             // Insérez les données dans la table "film"
-    $sql = "INSERT INTO film (id_film, titre_film, annee_film, duree_film, image_film, synopsis_film, id_realisateur) 
-    VALUES (NULL, :titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
+        $sql = "INSERT INTO film (titre_film, annee_film, duree_film, image_film, synopsis_film, id_realisateur) 
+        VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
 
-    $params = [
-    ":titre" => $titre,
-    ":annee" => $annee,
-    ":duree_film" => $dureefilm,
-    ":img_film" => $img_film,
-    ":synopsis" => $synopsis,
-    ":id_realisateur" => $idRealisateur
-    ];
+        $params = [
+        ":titre" => $titre,
+        ":annee" => $annee,
+        ":duree_film" => $dureefilm,
+        ":img_film" => $img_film,
+        ":synopsis" => $synopsis,
+        ":id_realisateur" => $idRealisateur
+        ];
 
-    $addFilm = $dao->executerRequete($sql, $params);
+        $addFilm = $dao->executerRequete($sql, $params);
 
+        // Vérifiez si l'ID du film est valide avant d'insérer dans la table "posseder"
+        if ($idFilm) {
+        // Insérez les données dans la table "posseder"
+        $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
+        $paramsPosseder = [
+        ":id_film" => $idFilm,
+        ":id_genre" => $genre
+        ];
+        $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
+        } else {
+        // Gestion de l'erreur si l'ID du film n'est pas valide
+        // Par exemple, afficher un message d'erreur ou effectuer une autre action appropriée
+        }
 
-    // Insérez les données dans la table "posseder"
-    $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
-    $paramsPosseder = [
-    ":id_film" => $idFilm,
-    ":id_genre" => $genre
-    ];
-    $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
 
         }
         require "views/movie/addFilms.php";

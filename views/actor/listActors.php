@@ -8,23 +8,22 @@ ob_start();
     Liste des acteurs
     </h2>
     
-    <div class="main-content">
+    <div class="main-content card">
         <?php
         // echo "<div class='li'";
         
         while ($actor = $actors->fetch()) {
                 echo "
                     <div class='li'>
-                            <span></span>
                             <p>" . $actor["nom"] . " " . $actor["prenom"] . "</p>
                     </div>
                 ";
             }
             
             echo 
-            "<div class='icon'>
-                <a href='index.php?action=addActors'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
-            </div>";
+            "<a href='index.php?action=addActors'><div class='li'>
+                <img src='public/Img/icons8-plus-50.png' alt='add icon'>
+            </div></a>";
         ?>
     </div>
 </div>

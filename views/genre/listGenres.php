@@ -8,7 +8,7 @@ ob_start();
     Liste des genres
     </h2>
     
-    <div class="main-content">
+    <div class="main-content card">
         
         <?php
         // echo "<div class='li'";
@@ -16,16 +16,15 @@ ob_start();
         while ($genre = $genres->fetch()) {
                 echo "
                     <div class='li'>
-                            <span></span>
                             <p>" . $genre["nom_genre"] ."</p>
                     </div>
                 ";
             }
             
         echo 
-        "<div class='icon'>
-            <a href='index.php?action=addGenres'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
-        </div>";
+        "<a href='index.php?action=addGenres'><div class='li'>
+            <img src='public/Img/icons8-plus-50.png' alt='add icon'>
+        </div></a>";
         ?>
     </div>
 </div>

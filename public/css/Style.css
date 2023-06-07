@@ -6,12 +6,9 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   width: auto;
-  background-image: url(../Img/Joker.jpg);
-  background-size: cover;
-  -webkit-backdrop-filter: blur(7px) brightness(70%);
-          backdrop-filter: blur(7px) brightness(70%);
+  background-color: rgb(32, 38, 46);
 }
 
 p {
@@ -24,6 +21,10 @@ nav {
   justify-content: space-between;
   align-items: end;
   text-align: center;
+}
+nav #home {
+  font-weight: bold;
+  font-size: 1.6em;
 }
 nav ul {
   display: flex;
@@ -39,6 +40,7 @@ nav ul li a {
   letter-spacing: 3px;
   color: ghostwhite;
   text-decoration: none;
+  line-height: 0;
 }
 nav ul li:hover {
   transform: scale(1.1);
@@ -67,11 +69,11 @@ nav #searchbar:focus {
 }
 
 main {
-  height: 869px;
+  height: 950px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: ghostwhite;
   color: ghostwhite;
 }
 main h2 {
@@ -146,7 +148,7 @@ main .sec-2 h1 {
   color: #FFFFFF;
 }
 main .sec-2 h1 .word-1 {
-  font-weight: 200;
+  font-weight: 300;
 }
 main .sec-2 h1 .word-2 {
   font-weight: 100;
@@ -166,12 +168,17 @@ main .sec-2 h1 .word-5 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: end;
+  z-index: 0;
   width: 100%;
-  height: inherit;
+  /* min-height: 91vh; */
   color: ghostwhite;
+  margin-top: 83px;
 }
 .page-content h2 {
   font-size: 3.5em;
+  padding: 0;
+  margin: 0 0 25px 0;
 }
 
 .icon {
@@ -190,8 +197,9 @@ main .sec-2 h1 .word-5 {
 .main-content {
   display: inline;
   width: 100%;
-  height: 750px;
+  height: 822px;
   overflow-y: scroll;
+  padding-left: 5%;
 }
 .main-content::-webkit-scrollbar {
   width: 7px;
@@ -201,27 +209,31 @@ main .sec-2 h1 .word-5 {
   border-radius: 20px;
 }
 .main-content::-webkit-scrollbar-thumb {
-  background-color: rgb(28, 39, 30);
+  background-color: rgb(44, 57, 75);
   border-radius: 20px;
 }
 
 .li {
   display: inline-flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  -webkit-backdrop-filter: blur(7px) brightness(70%);
+  backdrop-filter: blur(7px) brightness(70%);
   border: solid 1px rgba(248, 248, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2705882353);
   border-radius: 10px;
   font-size: 2.5em;
   width: 300px;
-  min-height: 400px;
+  min-height: 350px;
   max-height: -moz-max-content;
   max-height: max-content;
   overflow: hidden;
   margin: 2%;
   transition: all 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 0 35px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 35px;
   -webkit-backdrop-filter: blur(50px);
-          backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
 }
 .li span {
   background: rgba(128, 128, 128, 0.5);
@@ -245,6 +257,18 @@ main .sec-2 h1 .word-5 {
 .li:hover {
   transform: scale(1.07);
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 40px;
+}
+.li .icon {
+  display: inline;
+  width: 300px;
+  min-height: 400px;
+  margin: 2%;
+}
+.li .icon img {
+  transition: all 1s ease-in-out;
+}
+.li .icon img:hover {
+  transform: rotate(180deg);
 }
 
 img.img-film {
@@ -324,7 +348,7 @@ img.img-film {
   background-color: transparent;
   border-radius: 10px;
   border: rgba(248, 248, 255, 0.5) solid 1px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 0 50px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 50px;
   width: 30%;
   margin-right: 20%;
   min-width: 300px;

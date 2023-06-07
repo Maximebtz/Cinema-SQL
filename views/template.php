@@ -16,7 +16,7 @@
           <nav>
             <ul>
               <li>
-                <a href="index.php?action=homePage">HOME</a>
+                <a href="index.php?action=homePage" id="home">HOME</a>
               </li>
               <li>
                 <a href="index.php?action=listFilms">LISTE FILMS</a>

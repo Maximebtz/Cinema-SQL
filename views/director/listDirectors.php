@@ -8,23 +8,22 @@ ob_start();
     Liste des réalisateurs
     </h2>
     
-    <div class="main-content">
+    <div class="main-content card">
             <?php
             // echo "<div class='li'";
             
             while ($director = $directors->fetch()) {
                     echo "
                         <div class='li'>
-                                <span></span>
                                 <p>" . $director["nom"] . " " . $director["prenom"] . "</p>
                         </div>
                     ";
                 }
                 
                 echo 
-                "<div class='icon'>
-                    <a href='index.php?action=addDirectors'><img src='public/Img/icons8-plus-50.png' alt='add icon'></a>
-                </div>";
+                "<a href='index.php?action=addDirectors'><div class='li'>
+                    <img src='public/Img/icons8-plus-50.png' alt='add icon'>
+                </div></a>";
             ?>
     </div>
 </div>
