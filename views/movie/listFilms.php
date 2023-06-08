@@ -14,6 +14,8 @@ ob_start();
         while ($film = $films->fetch()) {
                 echo "
                     <div class='li'>
+                            <input type='hidden' name='film_id' value='" . $film["id_film"] . "'>
+                            <button type='submit' name='delete_film' id='delete'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtklEQVR4nO2VOwoCMRRFX6W9RXAP2YGMYOuOLC1dj+5gotVM5w50HXIkmCLE+eWpII6nCS8k95AfERkFwJZndtqwE3rcEIF7QVDKOECJfKtgARQNeau0XyWQllV1jf0Lfm+LNsAcmH1EoCJXAByBGjChNqF27xLUofsM2NB6ql4Bjxe7TAX+FUfjTRR6i2SmTXBlGAdgGubYKNy3tusM1sClJ3wPTFQryCX7DBQC/81WyS3ydXkHQDyc36v9MlYAAAAASUVORK5CYII='></button>
                             <span><img class='img-film' src='" . $film["image_film"] . "' alt='Image du film'></span>
                             <p>" . $film["titre_film"] . "</p>
                             <a href='index.php?action=detailFilms&id=" . $film["id_film"] . "'>Detail Film</a>

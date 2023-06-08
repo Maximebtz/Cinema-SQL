@@ -240,6 +240,24 @@ main .sec-2 h1 .word-5 {
   width: 100%;
   height: 200px;
 }
+.li #delete {
+  position: absolute;
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
+  line-height: 0;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  border-radius: 0 0 0 10px;
+  background-color: #8c8c8c;
+  border: none;
+}
+.li #delete:hover {
+  background-color: rgb(205, 24, 24);
+  transform: none;
+}
 .li p {
   padding: 25px;
   text-align: center;
@@ -411,7 +429,7 @@ img.img-film {
   background-color: rgba(248, 248, 255, 0.8);
 }
 .right-content form #submit {
-  margin: 20px 65px 0 65px;
+  margin: 20px 75px 0 85px;
   height: 45px;
   background-color: ghostwhite;
   color: gray;
@@ -427,7 +445,14 @@ img.img-film {
   display: flex;
 }
 
+.annee {
+  display: flex;
+  flex-direction: column;
+}
+
 .duree {
+  display: flex;
+  flex-direction: column;
   margin-left: 15px;
 }
 .duree #genre_film {

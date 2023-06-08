@@ -25,4 +25,9 @@ class DAO{
         }
         return $resultat;
     }
+
+    //retourner le dernier id 
+    public function lastInsertId() {
+        return $this->bdd->lastInsertId();
+    }
 }

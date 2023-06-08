@@ -26,8 +26,8 @@ ob_start();
                 
                 <label for="sexe">Sexe :</label>
                 <select name="sexe" id="sexe" required>
-                    <option value="homme">Homme</option>
-                    <option value="femme">Femme</option>
+                    <option value="homme">H</option>
+                    <option value="femme">F</option>
                     <option value="autre">Autre</option>
                 </select>
                 

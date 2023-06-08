@@ -52,13 +52,13 @@ class MovieController {
         VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
 
         $params = [
-        ":titre" => $titre,
-        ":annee" => $annee,
-        ":duree_film" => $dureefilm,
-        ":img_film" => $img_film,
-        ":synopsis" => $synopsis,
-        ":id_realisateur" => $idRealisateur
-        ];
+            ":titre" => $titre,
+            ":annee" => $annee,
+            ":duree_film" => $dureefilm,
+            ":img_film" => $img_film,
+            ":synopsis" => $synopsis,
+            ":id_realisateur" => $idRealisateur
+            ];
 
         $addFilm = $dao->executerRequete($sql, $params);
 
@@ -67,15 +67,11 @@ class MovieController {
         // Insérez les données dans la table "posseder"
         $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
         $paramsPosseder = [
-        ":id_film" => $idFilm,
-        ":id_genre" => $genre
-        ];
+                        ":id_film" => $idFilm,
+                        ":id_genre" => $genre
+                        ];
         $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
-        } else {
-        // Gestion de l'erreur si l'ID du film n'est pas valide
-        // Par exemple, afficher un message d'erreur ou effectuer une autre action appropriée
-        }
-
+        };
 
         }
         require "views/movie/addFilms.php";
@@ -127,6 +123,10 @@ class MovieController {
         require "views/movie/modifyFilms.php";
     }
     
+    public function deleteFilm() {
+        
+    }
+
 }
 
 ?>

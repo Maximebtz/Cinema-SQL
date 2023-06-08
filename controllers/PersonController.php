@@ -33,7 +33,7 @@ class PersonController {
 
     public function addActors(){
         $dao = new DAO();
-
+    
         if(isset($_POST['addActor'])){
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
@@ -49,11 +49,23 @@ class PersonController {
                 ":sexe" => $sexe,
                 ":dateNaissance" => $date_naissance
             ];
-
+    
+            $addPerson = $dao->executerRequete($sql, $params);
+    
+            // recup l'id de la personne qui vient d'être ajoutée
+            $id_personne_acteur = $dao->getBDD()->lastInsertId();
+    
+            // inserer une nouvelle entrée dans la table acteur
+            $sql = "INSERT INTO acteur (id_acteur, id_personne) 
+                    VALUES (NULL, :id_personne)";
+            $params = [
+                ":id_personne" => $id_personne_acteur
+            ];
             $addActor = $dao->executerRequete($sql, $params);
         }
         require "views/actor/addActors.php";
     }
+    
     
 
     public function addDirectors(){
@@ -76,6 +88,15 @@ class PersonController {
                 ":dateNaissance" => $date_naissance
             ];
 
+            $addDirector = $dao->executerRequete($sql, $params);
+
+            $id_personne_realisateur = $dao->getBDD()->lastInsertId();
+
+            $sql = "INSERT INTO realisateur (id_realisateur, id_personne)
+                    VALUES (NULL, :id_personne)";
+            $params = [
+                ":id_personne" => $id_personne_realisateur
+            ];
             $addDirector = $dao->executerRequete($sql, $params);
         }
 

@@ -17,7 +17,7 @@ ob_start();
             <h2>
                 Ajout réalisateur
             </h2>
-            <form action="ajouter_director.php" method="post">
+            <form action="" method="post">
                 <label for="nom">Nom :</label>
                 <input type="text" name="nom" id="nom" required>
                 
@@ -26,15 +26,15 @@ ob_start();
                 
                 <label for="sexe">Sexe :</label>
                 <select name="sexe" id="sexe" required>
-                    <option value="homme">Homme</option>
-                    <option value="femme">Femme</option>
+                    <option value="homme">H</option>
+                    <option value="femme">F</option>
                     <option value="autre">Autre</option>
                 </select>
                 
                 <label for="dateNaissance">Date de naissance :</label>
                 <input type="date" name="dateNaissance" id="dateNaissance" required>
                 
-                <input id="submit" type="submit" value="Ajouter">
+                <input id="submit" type="submit" name="addDirector" value="Ajouter">
             </form>
         </div>
     </section>
