@@ -19,6 +19,7 @@ ob_start();
                             <ul>
                                 <li class='small'><p>Année :</p> " . $detail["YEAR(f.annee_film)"] ."</li>
                                 <li class='small'><p>Durée :</p> " . $detail["duree_film"] ." min</li>
+                                <li class='small'><p>Genre :</p> " . $detail["nom_genre"] ."</li>
                                 <li class='small'><p>Réalisateur :</p> " . $detail["nom"] ."</li>
                                 <li class='synopsis'><p>Synopsis :</p> " . $detail["synopsis_film"] ."</li>
                                 <a href='index.php?action=modifyFilms&id_film" . $detail['id_film'] . "'>Modifier</a>

@@ -18,10 +18,12 @@ class MovieController {
     public function findFilmDetails($filmId) {
         $dao = new DAO();
     
-        $sql = "SELECT f.id_film, f.id_realisateur, f.image_film, f.titre_film, YEAR(f.annee_film), pe.nom, f.duree_film, f.titre_film, f.synopsis_film 
+        $sql = "SELECT f.id_film, re.id_realisateur, f.image_film, ge.nom_genre, f.titre_film, YEAR(f.annee_film), pe.nom, f.duree_film, f.synopsis_film 
                 FROM film f
                 INNER JOIN realisateur re ON f.id_realisateur = re.id_realisateur
                 INNER JOIN personne pe ON re.id_personne = pe.id_personne
+                INNER JOIN posseder po ON f.id_film = po.id_film
+                INNER JOIN genre ge ON po.id_genre = ge.id_genre
                 WHERE f.id_film = :filmId";
         
         $params = array(':filmId' => $filmId);
