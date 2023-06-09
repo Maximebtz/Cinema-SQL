@@ -3,7 +3,7 @@
 ob_start();
 // demarre la temporisation de sortie
 ?>
-<div class="page-content">
+
     
     <div class="main-content card">
         <h2>
@@ -31,7 +31,7 @@ ob_start();
         </div></a>";
         ?>
     </div>
-</div>
+
 
 <?php
 $title = "Liste des genres";

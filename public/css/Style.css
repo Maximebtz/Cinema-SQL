@@ -26,6 +26,10 @@ p {
   color: ghostwhite;
 }
 
+header {
+  display: block;
+}
+
 nav {
   height: 100px;
   display: flex;
@@ -80,11 +84,13 @@ nav #searchbar:focus {
 }
 
 main {
-  height: 950px;
+  height: -moz-max-content;
+  height: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ghostwhite;
+  margin-top: 120px;
+  margin-bottom: 100px;
   color: ghostwhite;
 }
 main h2 {
@@ -177,19 +183,6 @@ main .sec-2 h1 .word-5 {
 /**********list**********/
 .page-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  z-index: 0;
-  width: 100%;
-  /* min-height: 91vh; */
-  color: ghostwhite;
-  margin-top: 83px;
-}
-.page-content h2 {
-  font-size: 3.5em;
-  padding: 0;
-  margin: 0 0 25px 0;
 }
 
 .icon {
@@ -206,38 +199,14 @@ main .sec-2 h1 .word-5 {
 }
 
 .main-content {
-  padding-top: 50px;
+  display: inline;
+}
+.main-content h2 {
+  margin-top: 0;
   text-align: center;
 }
 
-.li-film {
-  display: inline-block;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  -webkit-backdrop-filter: blur(7px) brightness(70%);
-  backdrop-filter: blur(7px) brightness(70%);
-  border: solid 1px rgba(248, 248, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.2705882353);
-  border-radius: 10px;
-  font-size: 2.5em;
-  width: 300px;
-  min-height: 350px;
-  max-height: -moz-max-content;
-  max-height: max-content;
-  margin: 2%;
-  overflow: hidden;
-  transition: all 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 35px;
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-}
-.li-film span {
-  background: rgba(128, 128, 128, 0.5);
-  width: 100%;
-  height: 200px;
-}
-.li-film .delete {
+.delete {
   position: absolute;
   width: -moz-max-content;
   width: max-content;
@@ -246,7 +215,32 @@ main .sec-2 h1 .word-5 {
   line-height: 0;
   top: 0;
   right: 0;
-  padding: 5px;
+}
+
+.li-film {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgba(248, 248, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2705882353);
+  border-radius: 10px;
+  font-size: 2.5em;
+  width: 300px;
+  min-height: 350px;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  overflow: hidden;
+  margin: 2%;
+  transition: all 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 35px;
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+}
+.li-film span {
+  background: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  height: 200px;
 }
 .li-film #delete {
   position: absolute;
@@ -261,7 +255,7 @@ main .sec-2 h1 .word-5 {
   border-radius: 0 0 0 10px;
   background-color: #8c8c8c;
   border: none;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .li-film #delete:hover {
   background-color: rgb(205, 24, 24);
@@ -304,8 +298,7 @@ main .sec-2 h1 .word-5 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  -webkit-backdrop-filter: blur(7px) brightness(70%);
-  backdrop-filter: blur(7px) brightness(70%);
+  text-align: center;
   border: solid 1px rgba(248, 248, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.2705882353);
   border-radius: 10px;
@@ -314,8 +307,8 @@ main .sec-2 h1 .word-5 {
   min-height: 350px;
   max-height: -moz-max-content;
   max-height: max-content;
-  margin: 2%;
   overflow: hidden;
+  margin: 2%;
   transition: all 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 35px;
   -webkit-backdrop-filter: blur(50px);
@@ -325,17 +318,6 @@ main .sec-2 h1 .word-5 {
   background: rgba(128, 128, 128, 0.5);
   width: 100%;
   height: 200px;
-}
-.li .delete {
-  position: absolute;
-  width: -moz-max-content;
-  width: max-content;
-  height: -moz-max-content;
-  height: max-content;
-  line-height: 0;
-  top: 0;
-  right: 0;
-  padding: 5px;
 }
 .li #delete {
   position: absolute;
@@ -350,7 +332,6 @@ main .sec-2 h1 .word-5 {
   border-radius: 0 0 0 10px;
   background-color: #8c8c8c;
   border: none;
-  transition: all 0.4s ease-in-out;
 }
 .li #delete:hover {
   background-color: rgb(205, 24, 24);
