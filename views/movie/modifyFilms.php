@@ -15,7 +15,7 @@ ob_start();
         </div>
         <div class="right-content">
             <h2>
-                Modifier
+                Modifier 
             </h2>
             <form action="" method="post">
                 <div class="horizontal">

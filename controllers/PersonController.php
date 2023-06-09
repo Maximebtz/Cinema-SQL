@@ -4,7 +4,7 @@ class PersonController {
     public function findAllActors(){
         $dao = new DAO();
 
-        $sql = "SELECT pe.nom, pe.prenom
+        $sql = "SELECT pe.id_personne, ac.id_acteur, pe.nom, pe.prenom
                 FROM personne pe
                 INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
                 GROUP BY pe.id_personne";
@@ -19,7 +19,7 @@ class PersonController {
     public function findAllDirectors(){
         $dao = new DAO();
 
-        $sql = "SELECT pe.nom, pe.prenom
+        $sql = "SELECT pe.id_personne, re.id_realisateur, pe.nom, pe.prenom
                 FROM personne pe
                 INNER JOIN realisateur re ON pe.id_personne = re.id_personne
                 GROUP BY pe.id_personne";

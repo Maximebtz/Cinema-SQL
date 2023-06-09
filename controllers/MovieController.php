@@ -5,16 +5,14 @@ require_once "bdd/DAO.php";
 class MovieController {
 
     public function findAllFilms(){
-
-        $dao = new DAO();
-
-        $sql = "SELECT f.id_film, f.image_film, f.titre_film FROM film f";
         
-        $films = $dao->executerRequete($sql);
+        $dao = new DAO();
+        
+            $sql = "SELECT f.id_film, f.image_film, f.titre_film FROM film f";
+            
+            $films = $dao->executerRequete($sql);
         
         require "views/movie/listFilms.php";
-
-
     }
 
     public function findFilmDetails($filmId) {
@@ -30,6 +28,7 @@ class MovieController {
         $details = $dao->executerRequete($sql, $params);
     
         require "views/movie/detailFilms.php";
+        require "views/movie/modifyFilms.php";
     }
     
     public function addFilms(){
@@ -115,18 +114,10 @@ class MovieController {
                     ":id_genre" => $genre
                 ];
                 $modifyPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
-            } else {
-                // Gestion de l'erreur si l'ID du film n'est pas valide
-                // Par exemple, afficher un message d'erreur ou effectuer une autre action appropriée
-            }
+            } 
         }
         require "views/movie/modifyFilms.php";
     }
-    
-    public function deleteFilm() {
-        
-    }
-
 }
 
 ?>
