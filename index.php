@@ -50,6 +50,8 @@ if(isset($_GET['action'])) {
         break;
         case 'modifyFilms': $movieCtrl->modifyFilms(); 
         break;
+        case 'filmsGenre': $genreCtrl->displayAllFilms($id); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();
