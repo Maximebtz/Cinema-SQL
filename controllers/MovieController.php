@@ -15,6 +15,23 @@ class MovieController {
         require "views/movie/listFilms.php";
     }
 
+    public function deleteFilms(){
+
+        $dao = new DAO();
+
+        $idFilm = $_POST['id_film'];
+
+        $sql = "DELETE FROM film 
+                WHERE id_film = ':idFilm'";
+
+        $params = [
+            ":idfilms" => $idFilm
+        ];
+
+        $delete = $dao->executerRequete($sql, $params);
+        require "views/movie/listFilms.php";
+    }
+
     public function findFilmDetails($filmId) {
         $dao = new DAO();
     
@@ -53,11 +70,12 @@ class MovieController {
             $genre = $_POST['id_genre'];
             $idRealisateur = $_POST['id_realisateur'];
 
-
             
-            // Insérez les données dans la table "film"
+            
+        // Insérez les données dans la table "film"
         $sql = "INSERT INTO film (titre_film, annee_film, duree_film, image_film, synopsis_film, id_realisateur) 
-        VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
+                VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur);
+                ";
 
         $params = [
             ":titre" => $titre,
@@ -72,16 +90,18 @@ class MovieController {
 
         // Vérifiez si l'ID du film est valide avant d'insérer dans la table "posseder"
         if ($idFilm) {
-        // Insérez les données dans la table "posseder"
-        $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
-        $paramsPosseder = [
-                        ":id_film" => $idFilm,
-                        ":id_genre" => $genre
-                        ];
-        $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
+            // Insérez les données dans la table "posseder"
+            $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
+            $paramsPosseder = [
+                            ":id_film" => $idFilm,
+                            ":id_genre" => $genre
+                            ];
+            $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
         };
 
         }
+        $img_film = "./public/Img/";
+
         require "views/movie/addFilms.php";
     }
 

@@ -164,13 +164,13 @@ main .sec-2 h1 {
   letter-spacing: 0.15em;
   color: #FFFFFF;
 }
-main .sec-2 h1 .word-1 {
-  font-weight: 300;
+main .sec-2 h1 .word-3 {
+  font-weight: 200;
 }
-main .sec-2 h1 .word-2 {
+main .sec-2 h1 .word-1 {
   font-weight: 100;
 }
-main .sec-2 h1 .word-3 {
+main .sec-2 h1 .word-2 {
   font-weight: 300;
 }
 main .sec-2 h1 .word-4 {

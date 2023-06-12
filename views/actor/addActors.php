@@ -6,9 +6,9 @@ ob_start();
     <section id="insert" class="sec-2 insert">
         <div class="left-content">
             <h1>
+                <span class="word-3">Here</span>
                 <span class="word-1">You</span>
                 <span class="word-2">Can</span>
-                <span class="word-3">Here</span>
                 <span class="word-4">Add</span>
                 <span class="word-5">Actors</span> 
             </h1>

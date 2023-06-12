@@ -4,7 +4,7 @@ ob_start();
 ?>
 <div class="page-detail">
     <h2>
-        
+        <?php echo $detail["titre_film"]?>
     </h2>
 
     <div class="main-detail">

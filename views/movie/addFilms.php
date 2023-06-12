@@ -5,9 +5,9 @@ ob_start();
     <section id="insert" class="sec-2 insert">
         <div class="left-content">
             <h1>
+                <span class="word-3">Here</span>
                 <span class="word-1">You</span>
                 <span class="word-2">Can</span>
-                <span class="word-3">Here</span>
                 <span class="word-4">Add</span>
                 <span class="word-5">Movies</span> 
             </h1>
@@ -24,28 +24,28 @@ ob_start();
                     </div>
                     <div class="duree">
                         <label for="id_genre">Genre :</label>
-                        <select name="id_genre" id="genre_film" required>
-                        <?php
-                            // Récupérez la liste des genres depuis votre base de données
-                            $dao = new DAO();
-                            $sql = "SELECT ge.id_genre, ge.nom_genre
-                                    FROM genre ge";
-                            $result = $dao->executerRequete($sql);
-                            
-                            // Parcourez les résultats et affichez les options de la liste déroulante
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                $idgenre = $row['id_genre'];
-                                $nomgenre = $row['nom_genre'];
-                                echo "<option value='$idgenre'>$nomgenre</option>";
-                            }
-                        ?>
+                        <select name="id_genre" id="genre_film" multiple required>
+                            <?php
+                                // Récupérez la liste des genres depuis votre base de données
+                                $dao = new DAO();
+                                $sql = "SELECT ge.id_genre, ge.nom_genre
+                                        FROM genre ge";
+                                $result = $dao->executerRequete($sql);
+                                
+                                // Parcourez les résultats et affichez les options de la liste déroulante
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                    $idgenre = $row['id_genre'];
+                                    $nomgenre = $row['nom_genre'];
+                                    echo "<option value='$idgenre'>$nomgenre</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>
                 <div class="horizontal">
                     <div class="annee">
                         <label for="annee_film">Année :</label>
-                        <input type="text" name="annee_film" id="annee_film" required>
+                        <input type="text" name="annee_film" id="annee_film" placeholder="0000-00-00" required>
                     </div>
                     <div class="duree">
                         <label for="duree_film">Durée :</label>

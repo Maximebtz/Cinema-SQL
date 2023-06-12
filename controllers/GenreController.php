@@ -40,15 +40,15 @@ class GenreController {
         // Requête pour récupérer les films correspondant au genre spécifié
         $sql = "SELECT f.id_film, f.image_film, f.titre_film 
                 FROM film f
-                INNER JOIN posseder p ON f.id_film = p.id_film
-                WHERE p.id_genre = :genreId";
+                INNER JOIN posseder po ON f.id_film = po.id_film
+                WHERE po.id_genre = :genreId";
         
         $params = array(':genreId' => $genreId);
         $filmsGenre = $dao->executerRequete($sql, $params);
     
 
-        $sqlGenre = "SELECT nom_genre 
-                    FROM genre 
+        $sqlGenre = "SELECT ge.nom_genre 
+                    FROM genre ge
                     WHERE id_genre = :genreId";
 
         $paramsGenre = array(':genreId' => $genreId);
@@ -58,7 +58,6 @@ class GenreController {
     
         require "views/genre/filmsGenre.php";
     }
-    
 }
 
 ?>

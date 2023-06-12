@@ -1,6 +1,6 @@
 <?php 
 
-
+// ' or 1 = 1 --
 
 require_once "controllers/GenreController.php";
 require_once "controllers/HomeController.php";
