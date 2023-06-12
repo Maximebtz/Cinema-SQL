@@ -4,17 +4,20 @@ ob_start();
 ?>
 <div class="page-detail">
     <h2>
-        <?php echo $detail["titre_film"]?>
+        <?php
+        while ($detail = $details->fetch()) {
+            
+            echo "<span><h3>" . $detail["titre_film"] . "</h3></span>";
+          
+        ?>
     </h2>
 
     <div class="main-detail">
         <?php
 // Afficher les détails du film
-while ($detail = $details->fetch()) {
     echo "
         <div class='li-detail'>
-            <span></span>
-            <h3>" . $detail["titre_film"] . "</h3>
+            
             <ul>
                 <li class='small'><p>Année :</p> " . $detail["YEAR(f.annee_film)"] . "</li>
                 <li class='small'><p>Durée :</p> " . $detail["duree_film"] . " min</li>";
@@ -35,8 +38,24 @@ while ($detail = $details->fetch()) {
                 }
 
                     echo "
-                <li class='small'><p>Réalisateur :</p> " . $detail["nom"] . "</li>
-                <li class='synopsis'><p>Synopsis :</p> " . $detail["synopsis_film"] . "</li>
+                <li class='small'><p>Réalisateur :</p> " . $detail["nom"] . " " . $detail["prenom"] ."</li>";
+
+                if ($castings && $castings->rowCount() > 0) {
+                    $castingList = ""; // Variable pour stocker les castings concaténés
+
+                    // Construire la liste des castings avec une virgule entre chaque genre
+                    while ($casting = $castings->fetch()) {
+                        $castingList .= $casting["nom_role"] . " par " . $casting["nom"] . " " . $casting["prenom"];
+                    }
+
+                    // Supprimer la virgule en trop
+                    $castingList = rtrim($castingList, ", ");
+
+                    echo "<li class='small'><p>Castings :</p> " . $castingList . "</li>";
+                }
+
+               
+                echo "<li class='synopsis'><p>Synopsis :</p> " . $detail["synopsis_film"] . "</li>
                 <a href='index.php?action=modifyFilms&id_film" . $detail['id_film'] . "'>Modifier</a>
             </ul>
         </div>

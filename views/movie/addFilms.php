@@ -16,7 +16,7 @@ ob_start();
             <h2>
                 Ajout film
             </h2>
-            <form action="" method="post">
+            <form action="index.php?action=addFilm" method="post">
                 <div class="horizontal">
                     <div class="annee">
                         <label for="titre_film">Titre :</label>
@@ -26,14 +26,8 @@ ob_start();
                         <label for="id_genre">Genre :</label>
                         <select name="id_genre" id="genre_film" multiple required>
                             <?php
-                                // Récupérez la liste des genres depuis votre base de données
-                                $dao = new DAO();
-                                $sql = "SELECT ge.id_genre, ge.nom_genre
-                                        FROM genre ge";
-                                $result = $dao->executerRequete($sql);
-                                
                                 // Parcourez les résultats et affichez les options de la liste déroulante
-                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
                                     $idgenre = $row['id_genre'];
                                     $nomgenre = $row['nom_genre'];
                                     echo "<option value='$idgenre'>$nomgenre</option>";
@@ -56,15 +50,8 @@ ob_start();
                 <label for="id_realisateur">Réalisateur :</label>
                 <select name="id_realisateur" id="id_realisateur" required>
                 <?php
-                    // Récupérez la liste des réalisateurs depuis votre base de données
-                    $dao = new DAO();
-                    $sql = "SELECT r.id_realisateur, p.nom, p.prenom 
-                            FROM realisateur r
-                            INNER JOIN personne p ON r.id_personne = p.id_personne";
-                    $result = $dao->executerRequete($sql);
-                    
                     // Parcourez les résultats et affichez les options de la liste déroulante
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {
                         $idRealisateur = $row['id_realisateur'];
                         $nomRealisateur = $row['nom'];
                         $prenomRealisateur = $row['prenom'];

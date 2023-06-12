@@ -85,6 +85,9 @@ nav{
     }
 }
 
+h3 {
+ font-size: 2em;
+}
 
 main {
     height: max-content;
@@ -411,10 +414,7 @@ img.img-film {
         padding: 20px;
         margin-top: 0;
     }
-    h3{
-        font-size: 2em;
-        padding: 10px;
-    }
+    
     ul{
         list-style-type: none;
         li{
@@ -463,8 +463,8 @@ img.img-film {
     border-radius: 10px;
     border: rgba(248, 248, 255, 0.500) solid 1px;
     box-shadow: rgba(0, 0, 0, 0.200) 0 0 50px;
-    width: 30%;
-    margin-right: 20%;
+    width: 35%;
+    margin-right: 15%;
     min-width: 300px;
     backdrop-filter: blur(10px);
     h2{
@@ -540,7 +540,22 @@ img.img-film {
     flex-direction: column;
     margin-left: 15px;
     #genre_film{
-        width: 100%;
+        height:auto;
+        border-radius: 15px 5px 5px 15px;
+        padding: 10px 10px;
+        &::-webkit-scrollbar {
+            width: 7px; 
+        }
+        
+        &::-webkit-scrollbar-track {
+            background:rgba(217, 217, 217, 0.778);
+            border-radius: 20px; 
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(44, 57, 75); 
+            border-radius: 20px; 
+        }
     }
 }
 

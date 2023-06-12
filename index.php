@@ -40,7 +40,9 @@ if(isset($_GET['action'])) {
         break;
         case 'addGenres': $genreCtrl->addGenres(); 
         break;
-        case 'addFilms': $movieCtrl->addFilms(); 
+        case 'addMovieForm': $movieCtrl->addMovieFormulaire();
+        break;
+        case 'addFilm': $movieCtrl->addFilm(); 
         break;
         case 'modifyActors': $personCtrl->modifyActor(); 
         break;
