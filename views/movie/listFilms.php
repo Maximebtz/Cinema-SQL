@@ -23,7 +23,8 @@ ob_start();
                     </div>
                 ";
             }
-                
+            
+            
                  
             echo "<a href='index.php?action=addMovieForm'>
                     <div class='li-film'>

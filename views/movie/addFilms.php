@@ -23,8 +23,8 @@ ob_start();
                         <input type="text" name="titre_film" id="titre_film" required>
                     </div>
                     <div class="duree">
-                        <label for="id_genre">Genre :</label>
-                        <select name="id_genre" id="genre_film" multiple required>
+                        <label for="genref[]">Genre :</label>
+                        <select name="genref[]" id="genre_film" multiple required>
                             <?php
                                 // Parcourez les résultats et affichez les options de la liste déroulante
                                 while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
@@ -39,7 +39,7 @@ ob_start();
                 <div class="horizontal">
                     <div class="annee">
                         <label for="annee_film">Année :</label>
-                        <input type="text" name="annee_film" id="annee_film" placeholder="0000-00-00" required>
+                        <input type="text" name="annee_film" id="annee_film" placeholder="0000" required>
                     </div>
                     <div class="duree">
                         <label for="duree_film">Durée :</label>

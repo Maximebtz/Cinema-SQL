@@ -41,7 +41,7 @@ ob_start();
                 <div class="horizontal">
                     <div class="annee">
                         <label for="annee_film">Année :</label>
-                        <input type="text" name="annee_film" id="annee_film" placeholder="0000-00-00">
+                        <input type="text" name="annee_film" id="annee_film" placeholder="0000">
                     </div>
                     <div class="duree">
                         <label for="duree_film">Durée :</label>

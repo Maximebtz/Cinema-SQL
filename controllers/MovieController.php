@@ -8,7 +8,8 @@ class MovieController {
         
         $dao = new DAO();
         
-            $sql = "SELECT f.id_film, f.image_film, f.titre_film FROM film f";
+            $sql = "SELECT f.id_film, f.image_film, f.titre_film 
+                    FROM film f";
             
             $films = $dao->executerRequete($sql);
         
@@ -47,52 +48,61 @@ class MovieController {
         require "views/movie/addFilms.php";
     }
     
-    public function addFilm(){
+    public function addFilm($array){
         $dao = new DAO();
-
+    
         if (isset($_POST['addFilm'])) {
-            $img_film = $_POST['image_film'];
-          
-            $titre = $_POST['titre_film'];
-            $annee = $_POST['annee_film'];
-            $dureefilm = $_POST['duree_film'];
-            $synopsis = $_POST['synopsis_film'];
-            // $genre = $_POST['id_genre'];
+            // $img_film = $_POST['image_film'];
+            $img_film = filter_input(INPUT_POST, 'image_film', FILTER_DEFAULT);
+            // $titre = $_POST['titre_film'];
+            $titre = filter_input(INPUT_POST, 'titre_film', FILTER_DEFAULT);
+            // $annee = $_POST['annee_film'];
+            $annee = filter_input(INPUT_POST, 'annee_film', FILTER_DEFAULT);
+            // $dureefilm = $_POST['duree_film'];
+            $dureefilm = filter_input(INPUT_POST, 'duree_film', FILTER_SANITIZE_NUMBER_INT);
+            // $synopsis = $_POST['synopsis_film'];
+            $synopsis = filter_input(INPUT_POST, 'synopsis_film', FILTER_DEFAULT);
             // $idRealisateur = $_POST['id_realisateur'];
+            $idRealisateur = filter_input(INPUT_POST, 'id_realisateur', FILTER_DEFAULT);
+            
+            // Insérez les données dans la table "film"
+            $sql = "INSERT INTO film (titre_film, annee_film, duree_film, image_film, synopsis_film, id_realisateur) 
+                    VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
+    
+            $params = [
+                ":titre" => $titre,
+                ":annee" => $annee,
+                ":duree_film" => $dureefilm,
+                ":img_film" => $img_film,
+                ":synopsis" => $synopsis,
+                ":id_realisateur" => $idRealisateur
+            ];
+            
+            $addFilm = $dao->executerRequete($sql, $params);
+            $dernierId = $dao->getBDD()->lastInsertId();
 
             
+            $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
+
+           
             
-        // Insérez les données dans la table "film"
-        $sql = "INSERT INTO film (titre_film, annee_film, duree_film, image_film, synopsis_film) 
-                VALUES (:titre, :annee, :duree_film, :img_film, :synopsis);
-                ";
+            // // Insérez les données dans la table "posseder"
+            $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) 
+                            VALUES (:id_film, :id_genre)";
 
-        $params = [
-            ":titre" => $titre,
-            ":annee" => $annee,
-            ":duree_film" => $dureefilm,
-            ":img_film" => $img_film,
-            ":synopsis" => $synopsis
-            // ":id_realisateur" => $idRealisateur
-        ];
-
-        $addFilm = $dao->executerRequete($sql, $params);
-        // $dernierId = $dao->getBDD()->lastInsertId();
-        // Vérifiez si l'ID du film est valide avant d'insérer dans la table "posseder"
-        // if ($idFilm) {
-        //     // Insérez les données dans la table "posseder"
-        //     $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) VALUES (:id_film, :id_genre)";
-        //     $paramsPosseder = [
-        //                     ":id_genre" => $genre,
-        //                     ":id_film" => $dernierId
-        //                     ];
-        //     $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
-        // };
-
+            foreach($genres as $genre_actuel){
+                $paramsPosseder = [
+                    ":id_film" => $dernierId,
+                    ":id_genre" => $genre_actuel
+                ];
+                $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
+            }
+            header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listFilms');
         }
-
+    
         require "views/movie/addFilms.php";
     }
+    
 
 
     public function modifyFilms(){
@@ -109,7 +119,9 @@ class MovieController {
             $idRealisateur = $_POST['id_realisateur'];
     
             // Mettez à jour les données dans la table "film"
-            $sql = "UPDATE film SET titre_film = :titre, annee_film = :annee, duree_film = :duree_film, image_film = :img_film, synopsis_film = :synopsis, id_realisateur = :id_realisateur WHERE id_film = :idFilm";
+            $sql = "UPDATE film 
+                    SET titre_film = :titre, annee_film = :annee, duree_film = :duree_film, image_film = :img_film, synopsis_film = :synopsis, id_realisateur = :id_realisateur 
+                    WHERE id_film = :idFilm";
     
             $params = [
                 ":titre" => $titre,
@@ -126,7 +138,9 @@ class MovieController {
             // Vérifiez si l'ID du film est valide avant de mettre à jour la table "posseder"
             if ($idFilm) {
                 // Mettez à jour les données dans la table "posseder"
-                $sqlPosseder = "UPDATE posseder SET id_genre = :id_genre WHERE id_film = :id_film";
+                $sqlPosseder = "UPDATE posseder 
+                                SET id_genre = :id_genre 
+                                WHERE id_film = :id_film";
                 $paramsPosseder = [
                     ":id_film" => $idFilm,
                     ":id_genre" => $genre
@@ -141,7 +155,7 @@ class MovieController {
         $dao = new DAO();
     
         // Requête pour récupérer les détails du film
-        $filmSql = "SELECT f.id_film, re.id_realisateur, f.image_film, f.titre_film, YEAR(f.annee_film), pe.nom, pe.prenom, f.duree_film, f.synopsis_film 
+        $filmSql = "SELECT f.id_film, re.id_realisateur, f.image_film, f.titre_film, f.annee_film, pe.nom, pe.prenom, f.duree_film, f.synopsis_film 
                     FROM film f
                     INNER JOIN realisateur re ON f.id_realisateur = re.id_realisateur
                     INNER JOIN personne pe ON re.id_personne = pe.id_personne

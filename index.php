@@ -42,7 +42,7 @@ if(isset($_GET['action'])) {
         break;
         case 'addMovieForm': $movieCtrl->addMovieFormulaire();
         break;
-        case 'addFilm': $movieCtrl->addFilm(); 
+        case 'addFilm': $movieCtrl->addFilm($_POST); 
         break;
         case 'modifyActors': $personCtrl->modifyActor(); 
         break;
