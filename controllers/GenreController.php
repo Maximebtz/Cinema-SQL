@@ -12,8 +12,30 @@ class GenreController {
         
         require "views/genre/listGenres.php";
 
-
     }
+
+
+    public function deleteGenre($id){
+        
+        $dao = new DAO();
+
+        
+            $sql = "DELETE  FROM genre
+                    WHERE id_genre = :idGenre";
+    
+            // $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = ['idGenre' => $id];
+            // foreach($genres as $genre_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            require "views/genre/deleteGenre.php";
+                header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenres');
+        }
+    
+
+
 
     public function addGenres(){
         // Vérifier si le formulaire a été soumis

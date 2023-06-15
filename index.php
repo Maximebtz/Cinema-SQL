@@ -54,6 +54,8 @@ if(isset($_GET['action'])) {
         break;
         case 'filmsGenre': $genreCtrl->displayAllFilms($id); 
         break;
+        case 'deleteGenre': $genreCtrl->deleteGenre($id); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();

@@ -19,7 +19,7 @@ ob_start();
         <div class='li-detail'>
             
             <ul>
-                <li class='small'><p>Année :</p> " . $detail["YEAR(f.annee_film)"] . "</li>
+                <li class='small'><p>Année :</p> " . $detail["annee_film"] . "</li>
                 <li class='small'><p>Durée :</p> " . $detail["duree_film"] . " min</li>";
 
                 // Vérifier si des genres existent

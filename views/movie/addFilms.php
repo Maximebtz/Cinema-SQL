@@ -61,7 +61,7 @@ ob_start();
                 </select>
 
                 <label for="image_film">Affiche :</label>
-                <input type="file" name="image_film" id="image_film" class="fileImg">
+                <input type="file" name="image_film" id="image_film" accept=".jpg, .jpeg, .png, .webp, image/*" class="fileImg">
                 
                 <label for="synopsis_film">Synopsis :</label>
                 <textarea name="synopsis_film" id="synopsis_film" rows="4" required></textarea>

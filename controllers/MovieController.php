@@ -20,16 +20,19 @@ class MovieController {
 
         $dao = new DAO();
 
-        $idFilm = $_POST['id_film'];
+        if(isset($_POST['delete'])){ // Vérifier si le bouton 'delete' a été déclenché
+        
+            $idFilm = $_POST['id_film'];
 
-        $sql = "DELETE FROM film 
-                WHERE id_film = ':idFilm'";
+            $sql = "DELETE FROM film 
+                    WHERE id_film = ':idFilm'";
 
-        $params = [
-            ":idfilms" => $idFilm
-        ];
+            $params = [
+                ":idfilm" => $idFilm
+            ];
 
-        $delete = $dao->executerRequete($sql, $params);
+            $delete = $dao->executerRequete($sql, $params);
+        }
         require "views/movie/listFilms.php";
     }
 
@@ -84,7 +87,6 @@ class MovieController {
             
             $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
 
-           
             
             // // Insérez les données dans la table "posseder"
             $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) 

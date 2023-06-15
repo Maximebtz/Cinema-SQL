@@ -93,8 +93,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  height: calc(100vh - 100px);
   color: ghostwhite;
 }
 main h2 {
@@ -204,6 +203,8 @@ main .sec-2 h1 .word-5 {
 
 .main-content {
   display: inline;
+  margin-top: 300px;
+  padding-bottom: 100px;
 }
 .main-content h2 {
   margin-top: 0;
@@ -257,13 +258,12 @@ main .sec-2 h1 .word-5 {
   right: 0;
   padding: 5px;
   border-radius: 0 0 0 10px;
-  background-color: #8c8c8c;
+  background-color: rgb(205, 24, 24);
   border: none;
   transition: all 0.2s ease-in-out;
 }
 .li-film #delete:hover {
-  background-color: rgb(205, 24, 24);
-  transform: none;
+  transform: scale(1.1);
 }
 .li-film p {
   padding: 25px;
@@ -334,12 +334,15 @@ main .sec-2 h1 .word-5 {
   right: 0;
   padding: 5px;
   border-radius: 0 0 0 10px;
-  background-color: #8c8c8c;
+  background-color: rgb(205, 24, 24);
   border: none;
 }
 .li #delete:hover {
   background-color: rgb(205, 24, 24);
   transform: none;
+  height: 201px;
+  width: 301px;
+  border-radius: 0;
 }
 .li p {
   padding: 25px;
@@ -425,9 +428,15 @@ img.img-film {
   padding-bottom: 10px;
 }
 .page-detail .li-detail {
+  width: 600px;
   padding: 25px;
   text-align: center;
   background: rgba(248, 248, 255, 0.2);
+}
+.page-detail .li-detail p .detail-p {
+  font-size: x-large;
+  color: darkgray;
+  text-decoration: underline;
 }
 .page-detail a {
   margin: 50px;
@@ -577,4 +586,31 @@ textarea#synopsis_film:focus {
   background-color: rgba(248, 248, 255, 0.8);
 }
 
-/********Footer*******//*# sourceMappingURL=Style.css.map */
+/********Delete*******/
+.right-content .delete-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-content .delete-form a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.right-content .delete-btn {
+  border-radius: 30px;
+  height: 55px;
+  background-color: #bfbfbf;
+  color: ghostwhite;
+  font-size: 1.5em;
+  width: 85%;
+  transition: all 0.4s ease-in-out;
+}
+.right-content .delete-btn:hover {
+  transform: scale(1.05);
+}
+.right-content .delete-btn:first-child {
+  background-color: rgb(205, 24, 24);
+  color: ghostwhite;
+}/*# sourceMappingURL=Style.css.map */
