@@ -270,6 +270,11 @@ main .sec-2 h1 .word-5 {
   text-align: center;
   height: 100%;
 }
+.li-film .detail-p {
+  font-size: x-large;
+  color: darkgray;
+  text-decoration: underline;
+}
 .li-film a {
   padding: 25px;
   font-size: 20px;
@@ -338,11 +343,7 @@ main .sec-2 h1 .word-5 {
   border: none;
 }
 .li #delete:hover {
-  background-color: rgb(205, 24, 24);
-  transform: none;
-  height: 201px;
-  width: 301px;
-  border-radius: 0;
+  transform: scale(1.1);
 }
 .li p {
   padding: 25px;
@@ -432,11 +433,6 @@ img.img-film {
   padding: 25px;
   text-align: center;
   background: rgba(248, 248, 255, 0.2);
-}
-.page-detail .li-detail p .detail-p {
-  font-size: x-large;
-  color: darkgray;
-  text-decoration: underline;
 }
 .page-detail a {
   margin: 50px;

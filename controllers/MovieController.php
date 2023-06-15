@@ -102,7 +102,7 @@ class MovieController {
             header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listFilms');
         }
     
-        require "views/movie/addFilms.php";
+        require "views/movie/deleteMovie.php";
     }
     
 

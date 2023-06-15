@@ -51,10 +51,45 @@ class GenreController {
 
         require "views/genre/addGenres.php";
     }
-
+    
     public function modifyGenre(){
-        
+        $dao = new DAO();
+        $idGenre = $_GET['id_genre'];
+
+        $sql2 = "SELECT nom_genre 
+                FROM genre 
+                WHERE id_genre = :idGenre";
+        $params2 = array(':idGenre' => $idGenre);
+        $genre = $dao->executerRequete($sql2, $params2)->fetch();
+
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $idGenre = filter_input(INPUT_POST, 'id_genre', FILTER_SANITIZE_NUMBER_INT);
+            $nomGenre = filter_input(INPUT_POST, 'nom_genre', FILTER_SANITIZE_SPECIAL_CHARS);
+            var_dump($idGenre, $nomGenre);
+    
+            $dao = new DAO();
+            $sql = "UPDATE genre 
+                    SET nom_genre = :nomGenre 
+                    WHERE id_genre = :idGenre";
+
+            $params = array(':idGenre' => $idGenre, ':nomGenre' => $nomGenre);
+            $result = $dao->executerRequete($sql, $params)->fetch();
+
+            if ($result) {
+                // La mise à jour a réussi
+                header('Location: index.php?action=listGenres');
+                exit();
+            } else {
+                // Gérer le cas où la mise à jour a échoué
+                echo "la mise a jour n'a pas fonctionnée";
+            }
+        }
+    
+
+        require "views/genre/modifyGenre.php";
     }
+    
 
     public function displayAllFilms($genreId){
         $dao = new DAO();
