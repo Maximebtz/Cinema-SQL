@@ -11,7 +11,7 @@ ob_start();
         // echo "<div class='li'";
         
             while ($film = $films->fetch()) {
-                    echo "<a href='index.php?action=detailFilms&id=" . $film["id_film"] . "'>
+                    echo "<a href='index.php?action=detailFilm&id=" . $film["id_film"] . "'>
                     <div class='li-film'>
                         <form class='delete' action='' method='post'>
                             <input type='hidden' name='id_film' value='" . $film["id_film"] . "'>

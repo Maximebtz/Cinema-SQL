@@ -9,7 +9,7 @@ ob_start();
                 <span class="word-3">Here</span>
                 <span class="word-1">You</span>
                 <span class="word-2">Can</span>
-                <span class="word-4">Modify</span>
+                <span class="word-4">Update</span>
                 <span class="word-5">Movies</span> 
             </h1>
         </div>
@@ -63,7 +63,7 @@ ob_start();
                 <label for="synopsis_film">Synopsis :</label>
                 <textarea name="synopsis_film" id="synopsis_film" rows="4"></textarea>
 
-                <input id="submit" type="submit" name="modifyFilm" value="Ajouter">
+                <input id="submit" type="submit" name="updateFilm" value="Ajouter">
             </form>
         </div>
     </section>

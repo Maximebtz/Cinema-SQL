@@ -17,42 +17,42 @@ $genreCtrl = new GenreController();
 $roleCtrl = new RoleController();
 
 // l'index va intercepter la requete HTTP et va orienter vers la bonen methode 
-// ex :  index.php?action=listFilms
+// ex :  index.php?action=listFilm
 
 if(isset($_GET['action'])) {
 
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     switch($_GET['action']){
-        case 'listFilms': $movieCtrl->findAllFilms(); 
+        case 'listFilm': $movieCtrl->findAllFilms(); 
         break;
-        case 'listActors': $personCtrl->findAllActors(); 
+        case 'listActor': $personCtrl->findAllActors(); 
         break;
-        case 'listDirectors': $personCtrl->findAllDirectors(); 
+        case 'listDirector': $personCtrl->findAllDirectors(); 
         break;
-        case 'listGenres': $genreCtrl->findAllGenres(); 
+        case 'listGenre': $genreCtrl->findAllGenres(); 
         break;
-        case 'detailFilms': $movieCtrl->findFilmDetails($id); 
+        case 'detailFilm': $movieCtrl->findFilmDetails($id); 
         break;
-        case 'addActors': $personCtrl->addActors(); 
+        case 'addActor': $personCtrl->addActor(); 
         break;
-        case 'addDirectors': $personCtrl->addDirectors(); 
+        case 'AddDirector': $personCtrl->AddDirector(); 
         break;
-        case 'addGenres': $genreCtrl->addGenres(); 
+        case 'addGenre': $genreCtrl->addGenre(); 
         break;
         case 'addMovieForm': $movieCtrl->addMovieFormulaire();
         break;
         case 'addFilm': $movieCtrl->addFilm($_POST); 
         break;
-        case 'modifyActors': $personCtrl->modifyActor(); 
+        case 'updateActors': $personCtrl->updateActor(); 
         break;
-        case 'modifyDirectors': $personCtrl->modifyDirector(); 
+        case 'updateDirectors': $personCtrl->updateDirector(); 
         break;
-        case 'modifyGenres': $genreCtrl->modifyGenre(); 
+        case 'updateGenres': $genreCtrl->updateGenre($id); 
         break;
-        case 'modifyFilms': $movieCtrl->modifyFilms(); 
+        case 'updateFilm': $movieCtrl->updateFilm(); 
         break;
-        case 'filmsGenre': $genreCtrl->displayAllFilms($id); 
+        case 'filmsGenre': $genreCtrl->displayAllFilms($id);
         break;
         case 'deleteGenre': $genreCtrl->deleteGenre($id); 
         break;

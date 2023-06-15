@@ -11,7 +11,7 @@ class PersonController {
         
         $actors = $dao->executerRequete($sql);
 
-        require "views/actor/listActors.php";
+        require "views/actor/listActor.php";
 
     }
     
@@ -26,19 +26,19 @@ class PersonController {
         
         $directors = $dao->executerRequete($sql);
 
-        require "views/director/listDirectors.php";
+        require "views/director/listDirector.php";
 
     }
 
 
-    public function addActors(){
+    public function addActor(){
         $dao = new DAO();
     
         if(isset($_POST['addActor'])){
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $sexe = $_POST['sexe'];
-            $date_naissance = $_POST['dateNaissance'];
+            $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_SPECIAL_CHARS);
+        $date_naissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_SPECIAL_CHARS);
             
             $sql = "INSERT INTO personne (id_personne, nom, prenom, sexe, dateNaissance) 
                     VALUES (NULL, :nom, :prenom, :sexe, :dateNaissance)";
@@ -63,20 +63,20 @@ class PersonController {
             ];
             $addActor = $dao->executerRequete($sql, $params);
         }
-        require "views/actor/addActors.php";
+        require "views/actor/addActor.php";
     }
     
     
 
-    public function addDirectors(){
+    public function AddDirector(){
 
         $dao = new DAO();
 
         if(isset($_POST['addDirector'])){
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $sexe = $_POST['sexe'];
-            $date_naissance = $_POST['dateNaissance'];
+            $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_SPECIAL_CHARS);
+        $date_naissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_SPECIAL_CHARS);
             
             $sql = "INSERT INTO personne (id_personne, nom, prenom, sexe, dateNaissance) 
                     VALUES (NULL, :nom, :prenom, :sexe, :dateNaissance)";
@@ -100,16 +100,16 @@ class PersonController {
             $addDirector = $dao->executerRequete($sql, $params);
         }
 
-        require "views/director/addDirectors.php";
+        require "views/director/AddDirector.php";
     }
 
 
-    public function modifyActor(){
+    public function updateActor(){
         
     }
 
 
-    public function modifyDirector(){
+    public function updateDirector(){
 
     }
 }

@@ -10,7 +10,7 @@ class GenreController {
         
         $genres = $dao->executerRequete($sql);
         
-        require "views/genre/listGenres.php";
+        require "views/genre/listGenre.php";
 
     }
 
@@ -25,23 +25,23 @@ class GenreController {
     
             // $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
     
-            $params = ['idGenre' => $id];
+            $params = ['idGenre' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
             // foreach($genres as $genre_actuel){
                 $dao->executerRequete($sql, $params);
                 
             // }
             require "views/genre/deleteGenre.php";
-                header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenres');
+                header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre');
         }
     
 
 
 
-    public function addGenres(){
+    public function addGenre(){
         // Vérifier si le formulaire a été soumis
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Récupérer les données du formulaire
-            $nomGenre = $_POST['nom_genre'];
+            $nomGenre = filter_input(INPUT_POST, 'nom_genre', FILTER_SANITIZE_SPECIAL_CHARS);
 
             // Insérer le nouveau genre dans la base de données 
             $dao = new DAO();
@@ -49,45 +49,42 @@ class GenreController {
             $dao->executerRequete($sql);
         }
 
-        require "views/genre/addGenres.php";
+        require "views/genre/addGenre.php";
     }
     
-    public function modifyGenre(){
+    public function updateGenre($id){
         $dao = new DAO();
-        $idGenre = $_GET['id_genre'];
 
         $sql2 = "SELECT nom_genre 
                 FROM genre 
                 WHERE id_genre = :idGenre";
-        $params2 = array(':idGenre' => $idGenre);
+        $params2 = array(':idGenre' => filter_var($id, FILTER_SANITIZE_NUMBER_INT));
         $genre = $dao->executerRequete($sql2, $params2)->fetch();
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idGenre = filter_input(INPUT_POST, 'id_genre', FILTER_SANITIZE_NUMBER_INT);
-            $nomGenre = filter_input(INPUT_POST, 'nom_genre', FILTER_SANITIZE_SPECIAL_CHARS);
-            var_dump($idGenre, $nomGenre);
-    
-            $dao = new DAO();
+        if (isset($_POST['updateGenres'])) {
+
+            // var_dump($idGenre, $nomGenre);
+            
             $sql = "UPDATE genre 
                     SET nom_genre = :nomGenre 
                     WHERE id_genre = :idGenre";
 
-            $params = array(':idGenre' => $idGenre, ':nomGenre' => $nomGenre);
-            $result = $dao->executerRequete($sql, $params)->fetch();
+            $nomGenre = filter_input(INPUT_POST, 'nomGenre', FILTER_SANITIZE_SPECIAL_CHARS);
+            $params = array(':idGenre' => $id, ':nomGenre' => $nomGenre);
+            $result = $dao->executerRequete($sql, $params);
 
             if ($result) {
                 // La mise à jour a réussi
-                header('Location: index.php?action=listGenres');
+                header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre');
                 exit();
             } else {
-                // Gérer le cas où la mise à jour a échoué
+                // La mise à jour a échoué
                 echo "la mise a jour n'a pas fonctionnée";
             }
         }
-    
 
-        require "views/genre/modifyGenre.php";
+        require "views/genre/updateGenre.php";
     }
     
 
@@ -100,7 +97,7 @@ class GenreController {
                 INNER JOIN posseder po ON f.id_film = po.id_film
                 WHERE po.id_genre = :genreId";
         
-        $params = array(':genreId' => $genreId);
+        $params = array(':genreId' => filter_var($genreId, FILTER_SANITIZE_NUMBER_INT));
         $filmsGenre = $dao->executerRequete($sql, $params);
     
 
@@ -108,7 +105,7 @@ class GenreController {
                     FROM genre ge
                     WHERE id_genre = :genreId";
 
-        $paramsGenre = array(':genreId' => $genreId);
+        $paramsGenre = array(':genreId' => filter_var($genreId, FILTER_SANITIZE_NUMBER_INT));
         
         
         $genre = $dao->executerRequete($sqlGenre, $paramsGenre)->fetch();

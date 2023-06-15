@@ -19,16 +19,16 @@
                 <a href="index.php?action=homePage" id="home">HOME</a>
               </li>
               <li>
-                <a href="index.php?action=listFilms">LISTE FILMS</a>
+                <a href="index.php?action=listFilm">LISTE FILMS</a>
               </li>
               <li>
-                <a href="index.php?action=listGenres">LISTE GENRES</a>
+                <a href="index.php?action=listGenre">LISTE GENRES</a>
               </li>
               <li>
-                <a href="index.php?action=listActors">LISTE ACTEURS</a>
+                <a href="index.php?action=listActor">LISTE ACTEURS</a>
               </li>
               <li>
-                <a href="index.php?action=listDirectors">LISTE REALISATEURS</a>
+                <a href="index.php?action=listDirector">LISTE REALISATEURS</a>
               </li>
             </ul>
               <input id="searchbar" onkeyup="search_film()" type="text"

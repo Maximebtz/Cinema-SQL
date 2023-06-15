@@ -19,7 +19,7 @@ ob_start();
             </h2>
             <form class="delete-form" action="" method="post">
                 <input class="delete-btn" type="submit" name ="deleteGenre" value="Supprimer">
-                <a class="delete-btn" href="http://localhost/Cinema/Cinema-PDO/index.php?action=listGenres">Non</a>
+                <a class="delete-btn" href="http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre">Non</a>
             </form>
         </div>
     </section>

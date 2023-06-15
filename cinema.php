@@ -55,7 +55,7 @@
                         <input type="text">
                     </div>
                 </section>
-                <section class="sec-3 modify">
+                <section class="sec-3 update">
 
                 </section>
                 <section class="sec-3 delete">
