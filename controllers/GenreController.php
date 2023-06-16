@@ -52,7 +52,6 @@ class GenreController {
             $sql = "INSERT INTO genre (nom_genre) VALUES ('$nomGenre')";
             $dao->executerRequete($sql);
         }
-
         require "views/genre/addGenre.php";
     }
     
@@ -88,7 +87,6 @@ class GenreController {
                 echo "la mise a jour n'a pas fonctionnée";
             }
         }
-
         require "views/genre/updateGenre.php";
     }
     

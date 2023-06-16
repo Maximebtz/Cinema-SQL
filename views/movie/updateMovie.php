@@ -1,6 +1,6 @@
 <?php
-ob_start();
-// demarre la temporisation de sortie
+    ob_start();
+    // demarre la temporisation de sortie
 ?>
 
     <section id="insert" class="sec-2 insert">
@@ -17,19 +17,19 @@ ob_start();
             <h2>
                 Modifier 
             </h2>
-            <form action="" method="post">
+            <form action="index.php?action=updateMovie" method="post">
                 <div class="horizontal">
                     <div class="duree">
                         <label for="id_genre">Genre :</label>
                         <select name="id_genre" id="genre_film" required>
                         <?php
-                            // Parcourez les résultats et affichez les options de la liste déroulante
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                $idgenre = $row['id_genre'];
-                                $nomgenre = $row['nom_genre'];
-                                echo "<option value='$idgenre'>$nomgenre</option>";
-                            }
-                        ?>
+                                // Parcourez les résultats et affichez les options de la liste déroulante
+                                while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
+                                    $idgenre = $row['id_genre'];
+                                    $nomgenre = $row['nom_genre'];
+                                    echo "<option value='$idgenre'>$nomgenre</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ ob_start();
                 <select name="id_realisateur" id="id_realisateur">
                 <?php
                     // Parcourez les résultats et affichez les options de la liste déroulante
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {
                         $idRealisateur = $row['id_realisateur'];
                         $nomRealisateur = $row['nom'];
                         $prenomRealisateur = $row['prenom'];
@@ -69,7 +69,7 @@ ob_start();
     </section>
 
 <?php
-$title = "Modifier film";
-$content = ob_get_clean();
-require "./views/template.php"
+    $title = "Modifier film";
+    $content = ob_get_clean();
+    require "./views/template.php"
 ?>

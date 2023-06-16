@@ -82,23 +82,23 @@ class MovieController {
             $sql = "INSERT INTO film (titre_film, annee_film, duree_film, image_film, synopsis_film, id_realisateur) 
                     VALUES (:titre, :annee, :duree_film, :img_film, :synopsis, :id_realisateur)";
     
-    $params = [
-        ":titre" => $titre,
-        ":annee" => $annee,
-        ":duree_film" => $dureefilm,
-        ":img_film" => $img_film,
-        ":synopsis" => $synopsis,
-        ":id_realisateur" => $idRealisateur
-    ];
-    
-    $addMovie = $dao->executerRequete($sql, $params);
-    $dernierId = $dao->getBDD()->lastInsertId();
-    
-    $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
-    
-    // Insérez les données dans la table "posseder"
-    $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) 
-                            VALUES (:id_film, :id_genre)";
+            $params = [
+                ":titre" => $titre,
+                ":annee" => $annee,
+                ":duree_film" => $dureefilm,
+                ":img_film" => $img_film,
+                ":synopsis" => $synopsis,
+                ":id_realisateur" => $idRealisateur
+            ];
+            
+            $addMovie = $dao->executerRequete($sql, $params);
+            $dernierId = $dao->getBDD()->lastInsertId();
+            
+            $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            // Insérez les données dans la table "posseder"
+            $sqlPosseder = "INSERT INTO posseder (id_film, id_genre) 
+                                    VALUES (:id_film, :id_genre)";
 
             foreach($genres as $genre_actuel){
                 $paramsPosseder = [
@@ -112,48 +112,50 @@ class MovieController {
     }
     
 
-    public function updateMovie(){
+    public function updateFormMovie($id){
         $dao = new DAO();
-    
-        if (isset($_POST['addMovie'])) {
+
             $img_film = filter_input(INPUT_POST, 'image_film', FILTER_DEFAULT);
-            $idFilm = filter_input(INPUT_GET, 'id_film', FILTER_SANITIZE_NUMBER_INT);
             $titre = filter_input(INPUT_POST, 'titre_film', FILTER_DEFAULT);
             $annee = filter_input(INPUT_POST, 'annee_film', FILTER_DEFAULT);
             $dureefilm = filter_input(INPUT_POST, 'duree_film', FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, 'synopsis_film', FILTER_DEFAULT);
-            $genre = filter_input(INPUT_POST, 'id_genre', FILTER_SANITIZE_NUMBER_INT);
-            $idRealisateur = filter_input(INPUT_POST, 'id_realisateur', FILTER_SANITIZE_NUMBER_INT);
+            $idRealisateur = filter_input(INPUT_POST, 'id_realisateur', FILTER_DEFAULT);
+
+        $sql2 = "SELECT f.titre_film, f.id_realisateur, f.annee_film, f.duree_film, f.synopsis_film, f.image_film 
+                FROM film f 
+                WHERE id_film = :idFilm";
+        $params2 = array(':idFilm' => filter_var($id, FILTER_SANITIZE_NUMBER_INT));
+        $film = $dao->executerRequete($sql2, $params2)->fetch();
+
+
+        require "views/movie/updateMovie.php";
+    }
+
+    
+    public function updateMovie($id){
+        $dao = new DAO();
+
+        if (isset($_POST['updateMovie'])) {
+
+            // var_dump($idFilm, $nomFilm);
             
-            // Mettez à jour les données dans la table "film"
             $sql = "UPDATE film 
-                    SET titre_film = :titre, annee_film = :annee, duree_film = :duree_film, image_film = :img_film, synopsis_film = :synopsis, id_realisateur = :id_realisateur 
+                    SET titre_film = :nomFilm, id_realisateur = :idDirector, annee_film = :anneeFilm, duree_film = :dureeFilm, synopsis_film = :synopsisFilm, image_film = :imgFilm
                     WHERE id_film = :idFilm";
-    
-    $params = [
-        ":titre" => $titre,
-        ":annee" => $annee,
-        ":duree_film" => $dureefilm,
-        ":img_film" => $img_film,
-        ":synopsis" => $synopsis,
-        ":id_realisateur" => $idRealisateur,
-        ":idFilm" => $idFilm
-            ];
-            
-            $updateMovie = $dao->executerRequete($sql, $params);
-    
-            // Vérifiez si l'ID du film est valide avant de mettre à jour la table "posseder"
-            if ($idFilm) {
-                // Mettez à jour les données dans la table "posseder"
-                $sqlPosseder = "UPDATE posseder 
-                                SET id_genre = :id_genre 
-                                WHERE id_film = :id_film";
-                $paramsPosseder = [
-                    ":id_film" => $idFilm,
-                    ":id_genre" => $genre
-                ];
-                $updatePosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
-            } 
+
+            $nomFilm = filter_input(INPUT_POST, 'nomFilm', FILTER_SANITIZE_SPECIAL_CHARS);
+            $params = array(':idFilm' => $id, ':nomFilm' => $nomFilm);
+            $result = $dao->executerRequete($sql, $params);
+
+            if ($result) {
+                // La mise à jour a réussi
+                header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listMovie');
+                exit();
+            } else {
+                // La mise à jour a échoué
+                echo "la mise a jour n'a pas fonctionnée";
+            }
         }
         require "views/movie/updateMovie.php";
     }
@@ -195,8 +197,8 @@ class MovieController {
                 $dao->executerRequete($sql, $params);
                 
             // }
-            header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre');
-        }
+            header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listMovie');
+    }
 }
 
 ?>

@@ -91,6 +91,7 @@ main {
   height: -moz-max-content;
   height: max-content;
   color: ghostwhite;
+  padding-top: 100px;
 }
 main h2 {
   font-size: 3em;
@@ -208,6 +209,12 @@ main .sec-2 h1 .word-5 {
   text-align: center;
 }
 
+.main-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .delete {
   position: absolute;
   width: -moz-max-content;
@@ -297,6 +304,12 @@ main .sec-2 h1 .word-5 {
 }
 .li-film .icon img:hover {
   transform: rotate(180deg);
+}
+
+.detail_btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .li {
