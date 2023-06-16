@@ -43,7 +43,7 @@ class GenreController {
 
     public function addGenre(){
         // Vérifier si le formulaire a été soumis
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['addGenre'])) {
             // Récupérer les données du formulaire
             $nomGenre = filter_input(INPUT_POST, 'nom_genre', FILTER_SANITIZE_SPECIAL_CHARS);
             

@@ -148,8 +148,10 @@ main .sec-1 .films-contener {
 }
 main .sec-2 {
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 100px;
 }
 main .sec-2 h1 {
   display: flex;
@@ -473,10 +475,9 @@ img.img-film {
   border: rgba(248, 248, 255, 0.5) solid 1px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 50px;
   width: 35%;
-  margin-right: 15%;
   min-width: 300px;
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 .right-content h2 {
   padding: 0 0 50px 0;

@@ -153,8 +153,10 @@ main {
         
         .sec-2{
             display: flex;
-            justify-content: space-between;
-            width: 90%;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 100px;
             h1{
                 display: flex;
                 flex-direction: column;
@@ -481,11 +483,11 @@ img.img-film {
     padding: 50px;
     background-color: transparent;
     border-radius: 10px;
-    border: rgba(248, 248, 255, 0.500) solid 1px;
-    box-shadow: rgba(0, 0, 0, 0.200) 0 0 50px;
+    border: rgba(248, 248, 255, 0.5) solid 1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 50px;
     width: 35%;
-    margin-right: 15%;
     min-width: 300px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     h2{
         padding: 0 0 50px 0;

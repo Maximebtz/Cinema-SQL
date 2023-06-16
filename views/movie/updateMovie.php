@@ -19,9 +19,14 @@
             </h2>
             <form action="index.php?action=updateMovie" method="post">
                 <div class="horizontal">
+                    <div class="annee">
+                        <label for="titre_film">Titre :</label>
+                        <input type="text" name="titre_film" id="titre_film" placeholder="<?= $film['titre_film'] ?>">
+                    </div>
                     <div class="duree">
                         <label for="id_genre">Genre :</label>
-                        <select name="id_genre" id="genre_film" required>
+                        <select name="id_genre" id="genre_film" placeholder="" multiple>
+                            
                         <?php
                                 // Parcourez les résultats et affichez les options de la liste déroulante
                                 while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
@@ -36,16 +41,16 @@
                 <div class="horizontal">
                     <div class="annee">
                         <label for="annee_film">Année :</label>
-                        <input type="text" name="annee_film" id="annee_film" placeholder="0000">
+                        <input type="text" name="annee_film" id="annee_film" placeholder="<?= $film['annee_film'] ?>">
                     </div>
                     <div class="duree">
                         <label for="duree_film">Durée :</label>
-                        <input type="number" name="duree_film" id="duree_film" placeholder="minutes">
+                        <input type="number" name="duree_film" id="duree_film" placeholder="<?= $film['duree_film'] ?>">
                     </div>
                 </div>
                 
                 <label for="id_realisateur">Réalisateur :</label>
-                <select name="id_realisateur" id="id_realisateur">
+                <select name="id_realisateur" id="id_realisateur" placeholder="">
                 <?php
                     // Parcourez les résultats et affichez les options de la liste déroulante
                     while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {
@@ -61,7 +66,7 @@
                 <input type="file" name="image_film" id="image_film" class="fileImg">
                 
                 <label for="synopsis_film">Synopsis :</label>
-                <textarea name="synopsis_film" id="synopsis_film" rows="4"></textarea>
+                <textarea name="synopsis_film" id="synopsis_film" rows="4" placeholder="<?= $film['synopsis_film'] ?>"></textarea>
 
                 <input id="submit" type="submit" name="updateMovie" value="Ajouter">
             </form>
