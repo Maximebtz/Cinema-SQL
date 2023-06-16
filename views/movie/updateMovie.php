@@ -31,7 +31,11 @@
                                     while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
                                         $idgenre = $row['id_genre'];
                                         $nomgenre = $row['nom_genre'];
-                                        echo "<option value='$idgenre'>$nomgenre</option>";
+                                        // if(){
+                                        //     echo "<option value='$idgenre' selected>$nomgenre</option>";
+                                        // }else{
+                                        //     echo "<option value='$idgenre'>$nomgenre</option>";
+                                        // }
                                     }
                             ?>
                         </select>
@@ -56,7 +60,11 @@
                             $idRealisateur = $row['id_realisateur'];
                             $nomRealisateur = $row['nom'];
                             $prenomRealisateur = $row['prenom'];
-                            echo "<option value='$idRealisateur'>$nomRealisateur $prenomRealisateur</option>";
+                            if($film['id_realisateur'] == $idRealisateur){
+                                echo "<option value='$idRealisateur' selected>$nomRealisateur $prenomRealisateur</option>";
+                            }else{
+                                echo "<option value='$idRealisateur'>$nomRealisateur $prenomRealisateur</option>";
+                            }
                         }
                     ?>
                 </select>
