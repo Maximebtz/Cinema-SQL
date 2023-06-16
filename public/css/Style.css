@@ -90,10 +90,6 @@ h3 {
 main {
   height: -moz-max-content;
   height: max-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 100px);
   color: ghostwhite;
 }
 main h2 {

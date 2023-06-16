@@ -63,7 +63,7 @@ ob_start();
                 <label for="synopsis_film">Synopsis :</label>
                 <textarea name="synopsis_film" id="synopsis_film" rows="4"></textarea>
 
-                <input id="submit" type="submit" name="updateFilm" value="Ajouter">
+                <input id="submit" type="submit" name="updateMovie" value="Ajouter">
             </form>
         </div>
     </section>

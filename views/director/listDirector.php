@@ -8,7 +8,7 @@ ob_start();
         <h2>
             Liste des réalisateurs
         </h2>
-        <!-- href='index.php?action=updateFilm&id=" . $director["id_director"] . "' -->
+        <!-- href='index.php?action=updateMovie&id=" . $director["id_director"] . "' -->
             <?php
             // echo "<div class='li'";
             

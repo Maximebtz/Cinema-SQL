@@ -17,14 +17,14 @@ $genreCtrl = new GenreController();
 $roleCtrl = new RoleController();
 
 // l'index va intercepter la requete HTTP et va orienter vers la bonen methode 
-// ex :  index.php?action=listFilm
+// ex :  index.php?action=listMovie
 
 if(isset($_GET['action'])) {
 
     $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     switch($_GET['action']){
-        case 'listFilm': $movieCtrl->findAllFilms(); 
+        case 'listMovie': $movieCtrl->findAllFilms(); 
         break;
         case 'listActor': $personCtrl->findAllActors(); 
         break;
@@ -32,7 +32,7 @@ if(isset($_GET['action'])) {
         break;
         case 'listGenre': $genreCtrl->findAllGenres(); 
         break;
-        case 'detailFilm': $movieCtrl->findFilmDetails($id); 
+        case 'detailMovie': $movieCtrl->findFilmDetails($id); 
         break;
         case 'addActor': $personCtrl->addActor(); 
         break;
@@ -42,7 +42,7 @@ if(isset($_GET['action'])) {
         break;
         case 'addMovieForm': $movieCtrl->addMovieFormulaire();
         break;
-        case 'addFilm': $movieCtrl->addFilm($_POST); 
+        case 'addMovie': $movieCtrl->addMovie($_POST); 
         break;
         case 'updateActor': $personCtrl->updateActor(); 
         break;
@@ -50,7 +50,7 @@ if(isset($_GET['action'])) {
         break;
         case 'updateGenre': $genreCtrl->updateGenre($id); 
         break;
-        case 'updateFilm': $movieCtrl->updateFilm(); 
+        case 'updateMovie': $movieCtrl->updateMovie(); 
         break;
         case 'filmsGenre': $genreCtrl->displayAllFilms($id);
         break;

@@ -16,7 +16,7 @@ ob_start();
             <h2>
                 Ajout film
             </h2>
-            <form action="index.php?action=addFilm" method="post">
+            <form action="index.php?action=addMovie" method="post">
                 <div class="horizontal">
                     <div class="annee">
                         <label for="titre_film">Titre :</label>
@@ -66,7 +66,7 @@ ob_start();
                 <label for="synopsis_film">Synopsis :</label>
                 <textarea name="synopsis_film" id="synopsis_film" rows="4" required></textarea>
 
-                <input id="submit" type="submit" name="addFilm" value="Ajouter">
+                <input id="submit" type="submit" name="addMovie" value="Ajouter">
             </form>
         </div>
     </section>

@@ -25,13 +25,13 @@ ob_start();
                         </form>        
                             <span><img class='img-film' src='" . $film["image_film"] . "' alt='Image du film'></span>
                             <p>" . $film["titre_film"] . "</p>
-                            <a href='index.php?action=detailFilm&id=" . $film["id_film"] . "'>Detail Film</a>
+                            <a href='index.php?action=detailMovie&id=" . $film["id_film"] . "'>Detail Film</a>
                     </div>
                 ";
             }
             
             echo 
-            "<a href='index.php?action=addFilm'><div class='li-film'>
+            "<a href='index.php?action=addMovie'><div class='li-film'>
                 <img src='public/Img/icons8-plus-50.png' alt='add icon'>
             </div></a>";
         ?>

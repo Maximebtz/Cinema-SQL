@@ -19,7 +19,7 @@
                 <a href="index.php?action=homePage" id="home">HOME</a>
               </li>
               <li>
-                <a href="index.php?action=listFilm">LISTE FILMS</a>
+                <a href="index.php?action=listMovie">LISTE FILMS</a>
               </li>
               <li>
                 <a href="index.php?action=listGenre">LISTE GENRES</a>

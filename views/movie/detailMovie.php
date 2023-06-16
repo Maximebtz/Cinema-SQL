@@ -56,7 +56,7 @@ ob_start();
 
                
                 echo "<li class='synopsis'><p>Synopsis :</p> " . $detail["synopsis_film"] . "</li>
-                <a href='index.php?action=updateFilm&id_film" . $detail['id_film'] . "'>Modifier</a>
+                <a href='index.php?action=updateMovie&id_film" . $detail['id_film'] . "'>Modifier</a>
             </ul>
         </div>
     ";

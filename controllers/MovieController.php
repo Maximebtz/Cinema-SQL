@@ -13,7 +13,7 @@ class MovieController {
             
         $films = $dao->executerRequete($sql);
         
-        require "views/movie/listFilm.php";
+        require "views/movie/listMovie.php";
     }
 
     public function deleteFilm($id){
@@ -47,13 +47,13 @@ class MovieController {
         $genres = $dao->executerRequete($sql1);
         $realisateurs = $dao->executerRequete($sql2);
 
-        require "views/movie/addFilm.php";
+        require "views/movie/addMovie.php";
     }
     
-    public function addFilm($array){
+    public function addMovie($array){
         $dao = new DAO();
     
-        if (isset($_POST['addFilm'])) {
+        if (isset($_POST['addMovie'])) {
             $img_film = filter_input(INPUT_POST, 'image_film', FILTER_DEFAULT);
             $titre = filter_input(INPUT_POST, 'titre_film', FILTER_DEFAULT);
             $annee = filter_input(INPUT_POST, 'annee_film', FILTER_DEFAULT);
@@ -74,7 +74,7 @@ class MovieController {
                 ":id_realisateur" => $idRealisateur
             ];
             
-            $addFilm = $dao->executerRequete($sql, $params);
+            $addMovie = $dao->executerRequete($sql, $params);
             $dernierId = $dao->getBDD()->lastInsertId();
 
             $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -90,14 +90,14 @@ class MovieController {
                 ];
                 $addPosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
             }
-            header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listFilm');
+            header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listMovie');
         }
     }
     
-    public function updateFilm(){
+    public function updateMovie(){
         $dao = new DAO();
     
-        if (isset($_POST['addFilm'])) {
+        if (isset($_POST['addMovie'])) {
             $img_film = filter_input(INPUT_POST, 'image_film', FILTER_DEFAULT);
             $idFilm = filter_input(INPUT_GET, 'id_film', FILTER_SANITIZE_NUMBER_INT);
             $titre = filter_input(INPUT_POST, 'titre_film', FILTER_DEFAULT);
@@ -122,7 +122,7 @@ class MovieController {
                 ":idFilm" => $idFilm
             ];
     
-            $updateFilm = $dao->executerRequete($sql, $params);
+            $updateMovie = $dao->executerRequete($sql, $params);
     
             // Vérifiez si l'ID du film est valide avant de mettre à jour la table "posseder"
             if ($idFilm) {
@@ -137,7 +137,7 @@ class MovieController {
                 $updatePosseder = $dao->executerRequete($sqlPosseder, $paramsPosseder);
             } 
         }
-        require "views/movie/updateFilm.php";
+        require "views/movie/updateMovie.php";
     }
 
     public function findFilmDetails($filmId) {
@@ -172,7 +172,7 @@ class MovieController {
         
         $castings = $dao->executerRequete($castingSql, $params);
     
-        require "views/movie/detailFilm.php";
+        require "views/movie/detailMovie.php";
     }
 }
 
