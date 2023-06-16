@@ -50,7 +50,7 @@ if(isset($_GET['action'])) {
         break;
         case 'updateGenre': $genreCtrl->updateGenre($id); 
         break;
-        case 'updateMovie': $movieCtrl->updateMovie($_POST); 
+        case 'updateMovie': $movieCtrl->updateMovie($id); 
         break;
         case 'updateFormMovie': $movieCtrl->updateFormMovie($id); 
         break;

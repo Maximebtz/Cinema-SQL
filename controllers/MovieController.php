@@ -133,42 +133,42 @@ class MovieController {
     }
     
     
-    public function updateMovie() {
+    public function updateMovie($id) {
         $dao = new DAO();
     
         if (isset($_POST['updateMovie'])) {
-            // $idFilm = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            // $id = $_GET['id'];
             $titreFilm = filter_input(INPUT_POST, 'titre_film', FILTER_SANITIZE_SPECIAL_CHARS);
-            // $idRealisateur = filter_input(INPUT_POST, 'id_realisateur', FILTER_SANITIZE_NUMBER_INT);
-            // $anneeFilm = filter_input(INPUT_POST, 'annee_film', FILTER_SANITIZE_SPECIAL_CHARS);
-            // $dureeFilm = filter_input(INPUT_POST, 'duree_film', FILTER_SANITIZE_NUMBER_INT);
-            // $synopsisFilm = filter_input(INPUT_POST, 'synopsis_film', FILTER_SANITIZE_SPECIAL_CHARS);
+            $idRealisateur = filter_input(INPUT_POST, 'id_realisateur', FILTER_SANITIZE_NUMBER_INT);
+            $anneeFilm = filter_input(INPUT_POST, 'annee_film', FILTER_SANITIZE_SPECIAL_CHARS);
+            $dureeFilm = filter_input(INPUT_POST, 'duree_film', FILTER_SANITIZE_NUMBER_INT);
+            $synopsisFilm = filter_input(INPUT_POST, 'synopsis_film', FILTER_SANITIZE_SPECIAL_CHARS);
             // $imageFilm = filter_input(INPUT_POST, 'image_film', FILTER_SANITIZE_SPECIAL_CHARS);
     
             $sql = "UPDATE film 
-                    SET titre_film = :titreFilm
+                    SET id_realisateur = :idRealisateur, titre_film = :titreFilm, annee_film = :anneeFilm, duree_film = :dureeFilm, synopsis_film = :synopsisFilm
                     WHERE id_film = :idFilm";
-            // , id_realisateur = :idRealisateur, annee_film = :anneeFilm, duree_film = :dureeFilm, synopsis_film = :synopsisFilm, image_film = :imageFilm
-            $params = array(
+            
+            $params = [
                 ':titreFilm' => $titreFilm,
-                // ':idRealisateur' => $idRealisateur,
-                // ':anneeFilm' => $anneeFilm,
-                // ':dureeFilm' => $dureeFilm,
-                // ':synopsisFilm' => $synopsisFilm,
+                ':idRealisateur' => $idRealisateur,
+                ':anneeFilm' => $anneeFilm,
+                ':dureeFilm' => $dureeFilm,
+                ':synopsisFilm' => $synopsisFilm,
                 // ':imageFilm' => $imageFilm,
-                // ':idFilm' => $idFilm
-            );
+                ':idFilm' => $id
+            ];
     
             $result = $dao->executerRequete($sql, $params);
             
-            // if ($result) {
-            //     // La mise à jour a réussi
-            //     header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listMovie');
-            //     exit();
-            // } else {
-            //     // La mise à jour a échoué
-            //     echo "La mise à jour n'a pas fonctionné";
-            // }
+            if ($result) {
+                // La mise à jour a réussi
+                header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=detailMovie&id='. $id);
+                exit();
+            } else {
+                // La mise à jour a échoué
+                echo "La mise à jour n'a pas fonctionné";
+            }
         }
     
         require "views/movie/updateMovie.php";

@@ -17,23 +17,22 @@
             <h2>
                 Modifier 
             </h2>
-            <form action="index.php?action=updateMovie" method="post">
+            <form action="index.php?action=updateMovie&id=<?= $id ?>" method="post">
                 <div class="horizontal">
                     <div class="annee">
                         <label for="titre_film">Titre :</label>
-                        <input type="text" name="titre_film" id="titre_film" placeholder="<?= $film['titre_film'] ?>">
+                        <input type="text" name="titre_film" id="titre_film" value="<?= $film['titre_film'] ?>">
                     </div>
                     <div class="duree">
                         <label for="id_genre">Genre :</label>
-                        <select name="id_genre" id="genre_film" placeholder="" multiple>
-                            
-                        <?php
-                                // Parcourez les résultats et affichez les options de la liste déroulante
-                                while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
-                                    $idgenre = $row['id_genre'];
-                                    $nomgenre = $row['nom_genre'];
-                                    echo "<option value='$idgenre'>$nomgenre</option>";
-                                }
+                        <select name="id_genre" id="genre_film" multiple> 
+                            <?php
+                                    // Parcourez les résultats et affichez les options de la liste déroulante
+                                    while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
+                                        $idgenre = $row['id_genre'];
+                                        $nomgenre = $row['nom_genre'];
+                                        echo "<option value='$idgenre'>$nomgenre</option>";
+                                    }
                             ?>
                         </select>
                     </div>
@@ -41,32 +40,32 @@
                 <div class="horizontal">
                     <div class="annee">
                         <label for="annee_film">Année :</label>
-                        <input type="text" name="annee_film" id="annee_film" placeholder="<?= $film['annee_film'] ?>">
+                        <input type="text" name="annee_film" id="annee_film" value="<?= $film['annee_film'] ?>">
                     </div>
                     <div class="duree">
                         <label for="duree_film">Durée :</label>
-                        <input type="number" name="duree_film" id="duree_film" placeholder="<?= $film['duree_film'] ?>">
+                        <input type="number" name="duree_film" id="duree_film" value="<?= $film['duree_film'] ?>">
                     </div>
                 </div>
                 
                 <label for="id_realisateur">Réalisateur :</label>
                 <select name="id_realisateur" id="id_realisateur" placeholder="">
-                <?php
-                    // Parcourez les résultats et affichez les options de la liste déroulante
-                    while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {
-                        $idRealisateur = $row['id_realisateur'];
-                        $nomRealisateur = $row['nom'];
-                        $prenomRealisateur = $row['prenom'];
-                        echo "<option value='$idRealisateur'>$nomRealisateur $prenomRealisateur</option>";
-                    }
+                    <?php
+                        // Parcourez les résultats et affichez les options de la liste déroulante
+                        while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {
+                            $idRealisateur = $row['id_realisateur'];
+                            $nomRealisateur = $row['nom'];
+                            $prenomRealisateur = $row['prenom'];
+                            echo "<option value='$idRealisateur'>$nomRealisateur $prenomRealisateur</option>";
+                        }
                     ?>
                 </select>
 
-                <label for="image_film">Affiche :</label>
-                <input type="file" name="image_film" id="image_film" class="fileImg">
+                <!-- <label for="image_film">Affiche :</label>
+                <input type="file" name="image_film" id="image_film" class="fileImg"> -->
                 
                 <label for="synopsis_film">Synopsis :</label>
-                <textarea name="synopsis_film" id="synopsis_film" rows="4" placeholder="<?= $film['synopsis_film'] ?>"></textarea>
+                <textarea name="synopsis_film" id="synopsis_film" rows="4" ><?= $film['synopsis_film'] ?></textarea>
 
                 <input id="submit" type="submit" name="updateMovie" value="Ajouter">
             </form>
