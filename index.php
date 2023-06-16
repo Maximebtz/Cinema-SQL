@@ -36,7 +36,7 @@ if(isset($_GET['action'])) {
         break;
         case 'addActor': $personCtrl->addActor(); 
         break;
-        case 'AddDirector': $personCtrl->AddDirector(); 
+        case 'addDirector': $personCtrl->AddDirector(); 
         break;
         case 'addGenre': $genreCtrl->addGenre(); 
         break;
@@ -44,17 +44,19 @@ if(isset($_GET['action'])) {
         break;
         case 'addFilm': $movieCtrl->addFilm($_POST); 
         break;
-        case 'updateActors': $personCtrl->updateActor(); 
+        case 'updateActor': $personCtrl->updateActor(); 
         break;
-        case 'updateDirectors': $personCtrl->updateDirector(); 
+        case 'updateDirector': $personCtrl->updateDirector(); 
         break;
-        case 'updateGenres': $genreCtrl->updateGenre($id); 
+        case 'updateGenre': $genreCtrl->updateGenre($id); 
         break;
         case 'updateFilm': $movieCtrl->updateFilm(); 
         break;
         case 'filmsGenre': $genreCtrl->displayAllFilms($id);
         break;
         case 'deleteGenre': $genreCtrl->deleteGenre($id); 
+        break;
+        case 'deleteFormGenre': $genreCtrl->deleteFormGenre($id); 
         break;
         default: $homeCtrl->homePage();
     }} else {

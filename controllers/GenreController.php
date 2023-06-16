@@ -14,13 +14,15 @@ class GenreController {
 
     }
 
-
-    public function deleteGenre($id){
+    
+    
+    public function deleteFormGenre($id){
         
         $dao = new DAO();
 
         
-            $sql = "DELETE  FROM genre
+            $sql = "SELECT ge.id_genre
+                    FROM genre ge
                     WHERE id_genre = :idGenre";
     
             // $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -31,9 +33,26 @@ class GenreController {
                 
             // }
             require "views/genre/deleteGenre.php";
+    }
+
+    public function deleteGenre($id){
+        
+        $dao = new DAO();
+
+        if(isset($_POST['deleteGenre'])){
+            $sql = "DELETE  FROM genre
+                    WHERE id_genre = :idGenre";
+    
+            // $genres = filter_var_array($array['genref'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = ['idGenre' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // foreach($genres as $genre_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
                 header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre');
         }
-    
+    }
 
 
 
@@ -62,7 +81,7 @@ class GenreController {
         $genre = $dao->executerRequete($sql2, $params2)->fetch();
 
 
-        if (isset($_POST['updateGenres'])) {
+        if (isset($_POST['updateGenre'])) {
 
             // var_dump($idGenre, $nomGenre);
             

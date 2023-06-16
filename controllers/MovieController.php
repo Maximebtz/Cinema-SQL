@@ -16,25 +16,24 @@ class MovieController {
         require "views/movie/listFilm.php";
     }
 
-    public function deleteFilms(){
-
+    public function deleteFilm($id){
+        
         $dao = new DAO();
 
-        if(isset($_POST['delete'])){ // Vérifier si le bouton 'delete' a été déclenché
         
-            $idFilm = filter_input(INPUT_POST, 'id_film', FILTER_SANITIZE_NUMBER_INT);
-
-            $sql = "DELETE FROM film 
-                    WHERE id_film = :idFilm";
-
-            $params = [
-                ":idFilm" => $idFilm
-            ];
-
-            $delete = $dao->executerRequete($sql, $params);
+            $sql = "DELETE  FROM Film
+                    WHERE id_Film = :idFilm";
+    
+            // $Films = filter_var_array($array['Filmf'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = ['idFilm' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // foreach($Films as $Film_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            require "views/Film/deleteFilm.php";
+                header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listGenre');
         }
-        require "views/movie/listFilm.php";
-    }
 
    
 
@@ -93,8 +92,6 @@ class MovieController {
             }
             header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=listFilm');
         }
-    
-        require "views/movie/deleteMovie.php";
     }
     
     public function updateFilm(){
