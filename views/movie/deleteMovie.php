@@ -25,7 +25,7 @@ ob_start();
     </section>
 
 <?php
-$title = "Supp genre";
+$title = "Supp film";
 $content = ob_get_clean();
 require "./views/template.php"
 ?>

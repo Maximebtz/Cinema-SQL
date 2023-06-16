@@ -68,7 +68,7 @@ class PersonController {
     
     
 
-    public function AddDirector(){
+    public function addDirector(){
 
         $dao = new DAO();
 
@@ -100,7 +100,7 @@ class PersonController {
             $addDirector = $dao->executerRequete($sql, $params);
         }
 
-        require "views/director/AddDirector.php";
+        require "views/director/addDirector.php";
     }
 
 

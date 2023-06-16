@@ -25,7 +25,7 @@ ob_start();
                 }
                 
                 echo 
-                "<a href='index.php?action=AddDirector'><div class='li'>
+                "<a href='index.php?action=addDirector'><div class='li'>
                     <img src='public/Img/icons8-plus-50.png' alt='add icon'>
                 </div></a>";
             ?>
