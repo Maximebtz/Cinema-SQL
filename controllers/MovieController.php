@@ -117,17 +117,23 @@ class MovieController {
         
         $sql = "SELECT f.titre_film, f.id_realisateur, f.annee_film, f.duree_film, f.synopsis_film, f.image_film 
                 FROM film f 
-                WHERE id_film = :idFilm";
-        $params = array(':idFilm' => filter_var($id, FILTER_SANITIZE_NUMBER_INT));
-        $film = $dao->executerRequete($sql, $params)->fetch();
-    
+                WHERE id_film = $id";
+       
+        $film = $dao->executerRequete($sql)->fetch();
+        
         $sql1 = "SELECT ge.id_genre, ge.nom_genre
                 FROM genre ge";
         $sql2 = "SELECT r.id_realisateur, pe.nom, pe.prenom 
                 FROM realisateur r
                 INNER JOIN personne pe ON r.id_personne = pe.id_personne";
+        $sql3 = "SELECT po.id_genre, po.id_film
+                FROM posseder po
+                WHERE id_film = $id";
+
         $genres = $dao->executerRequete($sql1);
         $realisateurs = $dao->executerRequete($sql2);
+        $filmGenres = $dao->executerRequete($sql3);
+
     
         require "views/movie/updateMovie.php";
     }
@@ -143,6 +149,8 @@ class MovieController {
             $anneeFilm = filter_input(INPUT_POST, 'annee_film', FILTER_SANITIZE_SPECIAL_CHARS);
             $dureeFilm = filter_input(INPUT_POST, 'duree_film', FILTER_SANITIZE_NUMBER_INT);
             $synopsisFilm = filter_input(INPUT_POST, 'synopsis_film', FILTER_SANITIZE_SPECIAL_CHARS);
+            $genresFilms = $_POST['id_genre'];
+
             // $imageFilm = filter_input(INPUT_POST, 'image_film', FILTER_SANITIZE_SPECIAL_CHARS);
     
             $sql = "UPDATE film 
@@ -160,9 +168,26 @@ class MovieController {
             ];
     
             $result = $dao->executerRequete($sql, $params);
-            
+            var_dump($result);
+
             if ($result) {
-                // La mise à jour a réussi
+    
+                // Supprimer les anciens genres liés au film dans la table "posseder"
+                $sqlDeleteGenres = "DELETE FROM posseder 
+                                    WHERE id_film = :idFilm";
+                $paramsDeleteGenres = [':idFilm' => $id];
+                $deleteGenres = $dao->executerRequete($sqlDeleteGenres, $paramsDeleteGenres);
+    
+                // Insérer les nouveaux genres liés au film dans la table "posseder"
+                $sqlInsertGenres = "INSERT INTO posseder (id_film, id_genre) 
+                                    VALUES (:idFilm, :idGenre)";
+                foreach ($genresFilms as $genre) {
+                    $paramsInsertGenres = [':idFilm' => $id, ':idGenre' => $genre];
+                    $addGenres = $dao->executerRequete($sqlInsertGenres, $paramsInsertGenres);
+                    var_dump($addGenres);
+                }
+                var_dump($deleteGenres);
+                // Redirection vers la page de détail du film
                 header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=detailMovie&id='. $id);
                 exit();
             } else {
@@ -170,7 +195,7 @@ class MovieController {
                 echo "La mise à jour n'a pas fonctionné";
             }
         }
-    
+        
         require "views/movie/updateMovie.php";
     }
     

@@ -64,6 +64,14 @@ if(isset($_GET['action'])) {
         break;
         case 'deleteFormMovie': $movieCtrl->deleteFormMovie($id); 
         break;
+        // case 'deleteDirector': $personCtrl->deleteDirector($id); 
+        // break;
+        // case 'deleteFormDirector': $personCtrl->deleteFormDirector($id); 
+        // break;
+        // case 'deleteActor': $personCtrl->deleteActor($id); 
+        // break;
+        // case 'deleteFormActor': $personCtrl->deleteFormActor($id); 
+        // break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();

@@ -24,20 +24,25 @@
                         <input type="text" name="titre_film" id="titre_film" value="<?= $film['titre_film'] ?>">
                     </div>
                     <div class="duree">
-                        <label for="id_genre">Genre :</label>
-                        <select name="id_genre" id="genre_film" multiple> 
-                            <?php
-                                    // Parcourez les résultats et affichez les options de la liste déroulante
-                                    while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
-                                        $idgenre = $row['id_genre'];
-                                        $nomgenre = $row['nom_genre'];
-                                        // if(){
-                                        //     echo "<option value='$idgenre' selected>$nomgenre</option>";
-                                        // }else{
-                                        //     echo "<option value='$idgenre'>$nomgenre</option>";
-                                        // }
-                                    }
-                            ?>
+                        <label for="id_genre[]">Genre :</label>
+                        <select name="id_genre[]" id="genre_film" multiple>
+                                <?php
+                                    $filmGenreIds = array();
+                                        while ($row = $filmGenres->fetch(PDO::FETCH_ASSOC)) {
+                                            $filmGenreIds[] = $row['id_genre'];
+                                        }
+                                        
+                                        // Boucle pour afficher les options de genre
+                                        while ($row = $genres->fetch(PDO::FETCH_ASSOC)) {
+                                            $idgenre = $row['id_genre'];
+                                            $nomgenre = $row['nom_genre'];
+                                            if (in_array($idgenre, $filmGenreIds)) {
+                                                echo "<option value='$idgenre' selected>$nomgenre</option>";
+                                            } else {
+                                                echo "<option value='$idgenre'>$nomgenre</option>";
+                                            }
+                                        }
+                                ?>
                         </select>
                     </div>
                 </div>
