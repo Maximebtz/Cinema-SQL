@@ -27,13 +27,13 @@ ob_start();
 
                     // Construire la liste des détails avec une virgule entre chaque film
                     while ($film = $films->fetch()) {
-                    $filmList .= $film["titre_film"];
+                        $filmList .= $film["titre_film"] . ", ";
                     }
 
                     // Supprimer la virgule en trop
                     $filmList = rtrim($filmList, ", ");
 
-                    echo '<li class="small"><p>Films réalisés :</p> ' . $filmList . '</li>';
+                    echo "<li class='small'><p>Films réalisés :</p> " . $filmList . "</li>";
                 }
 
                 "
