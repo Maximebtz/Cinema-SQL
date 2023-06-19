@@ -104,6 +104,132 @@ class PersonController {
     }
 
 
+
+    public function findActorDetails($id) {
+        $dao = new DAO();
+        
+        // Requête pour récupérer les détails du film
+        $sql = "SELECT ac.id_acteur, pe.nom, pe.prenom, pe.dateNaissance
+                    FROM acteur ac
+                    INNER JOIN personne pe ON ac.id_personne = pe.id_personne
+                    WHERE ac.id_acteur = $id";
+    
+    // $params = array(':actorId' => $id);
+    $details = $dao->executerRequete($sql);
+    
+    
+    $castingSql = "SELECT jo.id_film, jo.id_role, jo.id_acteur, pe.nom, pe.prenom, ro.nom_role, f.titre_film
+                    FROM jouer jo
+                    INNER JOIN film f ON jo.id_film = f.id_film
+                    INNER JOIN role_film ro ON jo.id_role = ro.id_role
+                    INNER JOIN acteur ac ON jo.id_acteur = ac.id_acteur
+                    INNER JOIN personne pe ON ac.id_personne = pe.id_personne
+                    WHERE jo.id_acteur = $id";
+        
+        $castings = $dao->executerRequete($castingSql);
+        
+        require "views/actor/detailActor.php";
+    }
+
+
+    public function findDirectorDetails($id) {
+        $dao = new DAO();
+    
+        // Requête pour récupérer les détails du réalisateur
+        $sql = "SELECT re.id_realisateur, pe.nom, pe.prenom, pe.dateNaissance
+                FROM realisateur re
+                INNER JOIN personne pe ON re.id_personne = pe.id_personne
+                WHERE re.id_realisateur = :idRealisateur";
+    
+        $params = [':idRealisateur' => $id];
+        $details = $dao->executerRequete($sql, $params);
+    
+        // Requête pour récupérer les films réalisés par le réalisateur
+        $filmSql = "SELECT f.titre_film
+                    FROM film f
+                    WHERE f.id_realisateur = :idRealisateur";
+    
+        $films = $dao->executerRequete($filmSql, $params);
+    
+        require "views/director/detailDirector.php";
+    }
+
+
+    public function deleteFormActor($id){
+        
+        $dao = new DAO();
+
+        
+            $sql = "SELECT ac.id_acteur
+                    FROM acteur ac
+                    WHERE id_acteur = :idActeur";
+    
+            // $films = filter_var_array($array['filmf'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = [':idActeur' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // foreach($films as $film_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            require "views/actor/deleteActor.php";
+    }
+
+
+    public function deleteActor($id){
+        
+        $dao = new DAO();
+        
+            $sql = "DELETE FROM personne
+                    WHERE id_personne = :idPerson";
+    
+            // $Acteurs = filter_var_array($array['Acteurf'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = [':idPerson' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // foreach($Films as $Film_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listActor');
+    }
+
+
+    public function deleteFormDirector($id){
+        
+        $dao = new DAO();
+
+        
+            $sql = "SELECT re.id_realisateur
+                    FROM realisateur re
+                    WHERE id_realisateur = :idDirector";
+    
+            // $films = filter_var_array($array['filmf'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = [':idDirector' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // forereh($films as $film_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            require "views/director/deleteDirector.php";
+    }
+
+
+    public function deleteDirector($id){
+        
+        $dao = new DAO();
+        
+            $sql = "DELETE FROM personne
+                    WHERE id_personne = :idPerson";
+    
+            // $Acteurs = filter_var_array($array['Acteurf'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $params = [':idPerson' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)];
+            // foreach($Films as $Film_actuel){
+                $dao->executerRequete($sql, $params);
+                
+            // }
+            header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listDirector');
+    }
+
     public function updateActor(){
         
     }

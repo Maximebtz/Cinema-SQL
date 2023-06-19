@@ -225,7 +225,7 @@ class MovieController {
         $dao = new DAO();
     
         
-            $sql = "DELETE  FROM Film
+            $sql = "DELETE FROM film
                     WHERE id_Film = :idFilm;
                     DELETE FROM posseder
                     WHERE id_film = :idFilm";

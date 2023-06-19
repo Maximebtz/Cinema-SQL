@@ -34,6 +34,10 @@ if(isset($_GET['action'])) {
         break;
         case 'detailMovie': $movieCtrl->findFilmDetails($id); 
         break;
+        case 'detailActor': $personCtrl->findActorDetails($id); 
+        break;
+        case 'detailDirector': $personCtrl->findDirectorDetails($id); 
+        break;
         case 'addActor': $personCtrl->addActor(); 
         break;
         case 'addDirector': $personCtrl->addDirector(); 
@@ -64,14 +68,14 @@ if(isset($_GET['action'])) {
         break;
         case 'deleteFormMovie': $movieCtrl->deleteFormMovie($id); 
         break;
-        // case 'deleteDirector': $personCtrl->deleteDirector($id); 
-        // break;
-        // case 'deleteFormDirector': $personCtrl->deleteFormDirector($id); 
-        // break;
-        // case 'deleteActor': $personCtrl->deleteActor($id); 
-        // break;
-        // case 'deleteFormActor': $personCtrl->deleteFormActor($id); 
-        // break;
+        case 'deleteActor': $personCtrl->deleteActor($id); 
+        break;
+        case 'deleteFormActor': $personCtrl->deleteFormActor($id); 
+        break;
+        case 'deleteDirector': $personCtrl->deleteDirector($id); 
+        break;
+        case 'deleteFormDirector': $personCtrl->deleteFormDirector($id); 
+        break;
         default: $homeCtrl->homePage();
     }} else {
         $homeCtrl->homePage();

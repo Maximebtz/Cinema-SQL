@@ -32,7 +32,7 @@ ob_start();
                 </select>
                 
                 <label for="dateNaissance">Date de naissance :</label>
-                <input type="date" name="dateNaissance" id="dateNaissance" required>
+                <input type="date" name="dateNaissance" id="dateNaissance" placeholder="000-00-00">
                 
                 <input id="submit" type="submit" name="addDirector" value="Ajouter">
             </form>
