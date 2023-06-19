@@ -20,7 +20,8 @@ ob_start();
         echo "
             <div class='li-detail'>
                 <ul>
-                    <li class='small'><p>Date de naissance :</p> " . $detail["dateNaissance"] . "</li>";
+                    <li class='small'><p>Date de naissance :</p> " . $detail["dateNaissance"] . "</li>
+                    <li class='small'><p>Sexe :</p> " . $detail["sexe"] . "</li>";
     
                     if ($castings && $castings->rowCount() > 0) {
                         $castingList = ""; // Variable pour stocker les castings concaténés
@@ -37,15 +38,16 @@ ob_start();
                     }
     
                     "
-                </ul>
-            </div>
-        ";
-
-        
-    }
-    
-    $details->closeCursor();
-    ?>
+                    </ul>
+                    </div>
+                    ";
+                    
+                    
+                }
+                
+                $details->closeCursor();
+                ?>
+                <a href="index.php?action=updateActor&id=<?= $id ?>">Update</a>
         </div>
     </div>
         

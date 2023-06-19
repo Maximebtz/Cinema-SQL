@@ -109,7 +109,7 @@ class PersonController {
         $dao = new DAO();
         
         // Requête pour récupérer les détails du film
-        $sql = "SELECT ac.id_acteur, pe.nom, pe.prenom, pe.dateNaissance
+        $sql = "SELECT ac.id_acteur, pe.nom, pe.prenom, pe.dateNaissance, pe.sexe
                     FROM acteur ac
                     INNER JOIN personne pe ON ac.id_personne = pe.id_personne
                     WHERE ac.id_acteur = $id";
@@ -136,7 +136,7 @@ class PersonController {
         $dao = new DAO();
     
         // Requête pour récupérer les détails du réalisateur
-        $sql = "SELECT re.id_realisateur, pe.nom, pe.prenom, pe.dateNaissance
+        $sql = "SELECT re.id_realisateur, pe.nom, pe.prenom, pe.dateNaissance, pe.sexe
                 FROM realisateur re
                 INNER JOIN personne pe ON re.id_personne = pe.id_personne
                 WHERE re.id_realisateur = :idRealisateur";
@@ -230,14 +230,93 @@ class PersonController {
             header('location: http://localhost/Cinema/Cinema-PDO/index.php?action=listDirector');
     }
 
-    public function updateActor(){
+    public function updateActor($id) {
+        $dao = new DAO();
+    
+        if (isset($_POST['updateActor'])) {
+            $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_SPECIAL_CHARS);
+            $date_naissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_SPECIAL_CHARS);
         
+    
+            $sql = "UPDATE personne 
+                    SET nom = :nom, prenom = :prenom, sexe = :sexe, dateNaissance = :dateNaissance
+                    WHERE id_personne = :id_personne";
+    
+            $params = [
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":sexe" => $sexe,
+                ":dateNaissance" => $date_naissance,
+                ":id_personne" => $id
+            ];
+    
+            $updatePerson = $dao->executerRequete($sql, $params);
+    
+            // Rediriger vers la page de détails de l'acteur mis à jour
+            header("Location: index.php?action=actorDetails&id=$id");
+            exit();
+        }
+    
+        // Récupérer les détails de l'acteur à mettre à jour
+        $sql = "SELECT pe.id_personne, ac.id_acteur, pe.nom, pe.prenom, pe.sexe, pe.dateNaissance
+                FROM personne pe
+                INNER JOIN acteur ac ON pe.id_personne = ac.id_personne
+                WHERE ac.id_acteur = :id_acteur";
+    
+        $params = [
+            ":id_acteur" => $id
+        ];
+    
+        $details = $dao->executerRequete($sql, $params);
+    
+        require "views/actor/updateActor.php";
     }
-
-
-    public function updateDirector(){
-
+    
+    public function updateDirector($id) {
+        $dao = new DAO();
+    
+        if (isset($_POST['updateDirector'])) {
+            $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_SPECIAL_CHARS);
+            $date_naissance = filter_input(INPUT_POST, 'dateNaissance', FILTER_SANITIZE_SPECIAL_CHARS);
+    
+            $sql = "UPDATE personne 
+                    SET nom = :nom, prenom = :prenom, sexe = :sexe, dateNaissance = :dateNaissance
+                    WHERE id_personne = :id_personne";
+    
+            $params = [
+                ":nom" => $nom,
+                ":prenom" => $prenom,
+                ":sexe" => $sexe,
+                ":dateNaissance" => $date_naissance,
+                ":id_personne" => $id
+            ];
+    
+            $updatePerson = $dao->executerRequete($sql, $params);
+    
+            // Rediriger vers la page de détails du réalisateur mis à jour
+            header("Location: index.php?action=directorDetails&id=$id");
+            exit();
+        }
+    
+        // Récupérer les détails du réalisateur à mettre à jour
+        $sql = "SELECT pe.id_personne, re.id_realisateur, pe.nom, pe.prenom, pe.sexe, pe.dateNaissance
+                FROM personne pe
+                INNER JOIN realisateur re ON pe.id_personne = re.id_personne
+                WHERE re.id_realisateur = :id_realisateur";
+    
+        $params = [
+            ":id_realisateur" => $id
+        ];
+    
+        $details = $dao->executerRequete($sql, $params);
+    
+        require "views/director/updateDirector.php";
     }
+    
 }
 
 ?>

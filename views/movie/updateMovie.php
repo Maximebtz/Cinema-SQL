@@ -58,7 +58,7 @@
                 </div>
                 
                 <label for="id_realisateur">Réalisateur :</label>
-                <select name="id_realisateur" id="id_realisateur" placeholder="">
+                <select name="id_realisateur" id="id_realisateur" >
                     <?php
                         // Parcourez les résultats et affichez les options de la liste déroulante
                         while ($row = $realisateurs->fetch(PDO::FETCH_ASSOC)) {

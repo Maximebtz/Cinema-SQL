@@ -48,9 +48,9 @@ if(isset($_GET['action'])) {
         break;
         case 'addMovie': $movieCtrl->addMovie($_POST); 
         break;
-        case 'updateActor': $personCtrl->updateActor(); 
+        case 'updateActor': $personCtrl->updateActor($id); 
         break;
-        case 'updateDirector': $personCtrl->updateDirector(); 
+        case 'updateDirector': $personCtrl->updateDirector($id); 
         break;
         case 'updateGenre': $genreCtrl->updateGenre($id); 
         break;

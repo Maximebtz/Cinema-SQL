@@ -19,7 +19,7 @@ ob_start();
                     <a class='detail_btn' href='index.php?action=detailActor&id=" . $actor['id_acteur'] . "' class='clickable-cards'>
                         <a href='index.php?action=deleteFormActor&id=" . $actor["id_personne"] . "' id='delete'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAtklEQVR4nO2VOwoCMRRFX6W9RXAP2YGMYOuOLC1dj+5gotVM5w50HXIkmCLE+eWpII6nCS8k95AfERkFwJZndtqwE3rcEIF7QVDKOECJfKtgARQNeau0XyWQllV1jf0Lfm+LNsAcmH1EoCJXAByBGjChNqF27xLUofsM2NB6ql4Bjxe7TAX+FUfjTRR6i2SmTXBlGAdgGubYKNy3tusM1sClJ3wPTFQryCX7DBQC/81WyS3ydXkHQDyc36v9MlYAAAAASUVORK5CYII='></a>
                         <p>" . $actor["nom"] . " " . $actor["prenom"] . "</p> 
-                        <a href=''>update</a> 
+                         
                     </a>
                 </div>
                 ";
