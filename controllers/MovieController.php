@@ -57,9 +57,9 @@ class MovieController {
         $dao = new DAO();
         $sql1 = "SELECT ge.id_genre, ge.nom_genre
                 FROM genre ge";
-        $sql2 = "SELECT r.id_realisateur, p.nom, p.prenom 
+        $sql2 = "SELECT r.id_realisateur, pe.nom, pe.prenom 
                 FROM realisateur r
-                INNER JOIN personne p ON r.id_personne = p.id_personne";
+                INNER JOIN personne pe ON r.id_personne = pe.id_personne";
         $genres = $dao->executerRequete($sql1);
         $realisateurs = $dao->executerRequete($sql2);
         
@@ -168,7 +168,7 @@ class MovieController {
             ];
     
             $result = $dao->executerRequete($sql, $params);
-            var_dump($result);
+            
 
             if ($result) {
     
@@ -186,7 +186,7 @@ class MovieController {
                     $addGenres = $dao->executerRequete($sqlInsertGenres, $paramsInsertGenres);
                     var_dump($addGenres);
                 }
-                var_dump($deleteGenres);
+                
                 // Redirection vers la page de détail du film
                 header('Location: http://localhost/Cinema/Cinema-PDO/index.php?action=detailMovie&id='. $id);
                 exit();
