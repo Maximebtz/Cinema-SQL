@@ -34,13 +34,13 @@
                 <label for="dateNaissance">Date de naissance :</label>
                 <input type="date" name="dateNaissance" id="dateNaissance" >
                 
-                <input id="submit" type="submit" name="updateMovie" value="Ajouter">
+                <input id="submit" type="submit" name="updateActor" value="Ajouter">
             </form>
         </div>
     </section>
 
 <?php
-    $title = "Modifier film";
+    $title = "Modifier Acteur";
     $content = ob_get_clean();
     require "./views/template.php";
 ?>

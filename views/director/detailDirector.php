@@ -44,6 +44,7 @@ ob_start();
     
     $details->closeCursor();
     ?>
+    <a href="index.php?action=updateDirector&id=<?= $id ?>">update</a>
         </div>
     </div>
         
@@ -53,5 +54,5 @@ ob_start();
 <?php
     $title = "Détail réalisateur";
     $content = ob_get_clean();
-    require "./views/template.php"
+    require "./views/template.php";
 ?>
