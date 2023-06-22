@@ -10,7 +10,7 @@
                 <span class="word-1">You</span>
                 <span class="word-2">Can</span>
                 <span class="word-4">Update</span>
-                <span class="word-5">Actor</span> 
+                <span class="word-5">Director</span> 
             </h1>
         </div>
         <div class="right-content">
